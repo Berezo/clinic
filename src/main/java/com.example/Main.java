@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-
     public static void addTestDoctor(Session session){
         String first_name = "Marco";
         String surname = "Polo";
@@ -30,7 +29,7 @@ public class Main {
         session.getTransaction().commit();
     }
 
-    public static void show(Session session){
+    public static void showPatientsList(Session session){
         session.beginTransaction();
         List<Patient> patients = session.createQuery("SELECT a FROM Patient a", Patient.class).getResultList();
 
@@ -39,6 +38,17 @@ public class Main {
         }
         session.getTransaction().commit();
     }
+
+    public static void showDoctorList(Session session){
+        session.beginTransaction();
+        List<Doctor> doctors = session.createQuery("SELECT a FROM Doctor a", Doctor.class).getResultList();
+
+        for(Doctor doctor:doctors){
+            System.out.println(doctor);
+        }
+        session.getTransaction().commit();
+    }
+
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         SessionFactory sessionFactory = new Configuration()
@@ -51,6 +61,8 @@ public class Main {
 
         Session session = sessionFactory.openSession();
 
+        //showPatientsList(session);
+        showDoctorList(session);
         //addTestDoctor(session);
 
         session.close();
