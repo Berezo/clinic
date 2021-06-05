@@ -62,9 +62,10 @@ public class Main {
         Session session = sessionFactory.openSession();
 
         //showPatientsList(session);
-        showDoctorList(session);
         //addTestDoctor(session);
+        showDoctorList(session);
 
+        System.out.println("test");
         session.close();
     }
 }
