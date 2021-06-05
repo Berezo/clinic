@@ -73,7 +73,7 @@
 --     `registration_date` DATE NOT NULL,
 --     `visit_date` DATETIME NOT NULL,
 --     `visit_made` BOOLEAN NOT NULL,
---     `cancel_couse` VARCHAR(200),
+--     `cancel_cause` VARCHAR(200),
 --     CONSTRAINT `visit_pk` PRIMARY KEY(`id`),
 --     CONSTRAINT `visit_patient_fk` FOREIGN KEY(`patient_id`) REFERENCES `patient`(`id`) ON DELETE SET NULL,
 --     CONSTRAINT `visit_doctor_fk` FOREIGN KEY(`doctor_id`) REFERENCES `doctor`(`id`) ON DELETE SET NULL,
