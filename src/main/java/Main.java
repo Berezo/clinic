@@ -1,5 +1,3 @@
-package com.example;
-
 import com.example.entity.Doctor;
 import com.example.entity.DoctorAddress;
 import com.example.entity.Patient;

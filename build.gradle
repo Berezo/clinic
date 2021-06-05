@@ -1,6 +1,5 @@
 plugins {
     id 'java'
-    id 'application'
 }
 
 group 'com.example'
@@ -10,7 +9,6 @@ repositories {
     mavenCentral()
 }
 
-mainClassName = 'com.example.Main'
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
