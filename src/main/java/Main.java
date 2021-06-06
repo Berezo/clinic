@@ -1,7 +1,4 @@
-import com.example.entity.Doctor;
-import com.example.entity.DoctorAddress;
-import com.example.entity.Patient;
-import com.example.entity.PatientAddress;
+import com.example.entity.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -27,9 +24,10 @@ public class Main {
         session.getTransaction().commit();
     }
 
-    public static void showPatientsList(Session session){
+    public static void showPatients(Session session){
         session.beginTransaction();
-        List<Patient> patients = session.createQuery("SELECT a FROM Patient a", Patient.class).getResultList();
+        String query = "SELECT a FROM Patient a";
+        List<Patient> patients = session.createQuery(query, Patient.class).getResultList();
 
         for(Patient patient:patients){
             System.out.println(patient);
@@ -37,15 +35,51 @@ public class Main {
         session.getTransaction().commit();
     }
 
-    public static void showDoctorList(Session session){
+    public static void showDoctors(Session session){
         session.beginTransaction();
-        List<Doctor> doctors = session.createQuery("SELECT a FROM Doctor a", Doctor.class).getResultList();
+        String query = "SELECT a FROM Doctor a";
+        List<Doctor> doctors = session.createQuery(query, Doctor.class).getResultList();
 
         for(Doctor doctor:doctors){
             System.out.println(doctor);
         }
         session.getTransaction().commit();
     }
+
+    public static void showPrescriptions(Session session){
+        session.beginTransaction();
+        String query = "SELECT a FROM Prescription a";
+        List<Prescription> prescriptions = session.createQuery(query, Prescription.class).getResultList();
+
+        for(Prescription prescription:prescriptions){
+            System.out.println(prescription);
+        }
+        session.getTransaction().commit();
+    }
+
+    public static void showOfficeHours(Session session){
+        session.beginTransaction();
+        String query = "SELECT a FROM OfficeHours a";
+        List<OfficeHours> officeHours = session.createQuery(query, OfficeHours.class).getResultList();
+
+        for(OfficeHours officeHour:officeHours){
+            System.out.println(officeHour);
+        }
+        session.getTransaction().commit();
+    }
+
+    public static void showVisits(Session session){
+        session.beginTransaction();
+        String query = "SELECT a FROM Visit a";
+        List<Visit> visits = session.createQuery(query, Visit.class).getResultList();
+
+        for(Visit visit:visits){
+            System.out.println(visit);
+        }
+        session.getTransaction().commit();
+    }
+
+
 
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
@@ -55,13 +89,17 @@ public class Main {
                 .addAnnotatedClass(Patient.class)
                 .addAnnotatedClass(DoctorAddress.class)
                 .addAnnotatedClass(Doctor.class)
+                .addAnnotatedClass(OfficeHours.class)
+                .addAnnotatedClass(Prescription.class)
+                .addAnnotatedClass(Visit.class)
                 .buildSessionFactory();
 
         Session session = sessionFactory.openSession();
 
         //showPatientsList(session);
-        //addTestDoctor(session);
-        showDoctorList(session);
+        //showDoctorList(session);
+        showOfficeHours(session);
+
 
         System.out.println("test");
         session.close();
