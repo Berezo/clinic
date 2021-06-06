@@ -17,16 +17,20 @@ public class OfficeHours {
     @Column(name = "day")
     private String day;
 
-    @Column(name = "hour")
-    private String hour;
+    @Column(name = "start_hour")
+    private String startHour;
+
+    @Column(name = "end_hour")
+    private String endHour;
 
     public OfficeHours() {
     }
 
-    public OfficeHours(Doctor doctor, String day, String hour) {
+    public OfficeHours(Doctor doctor, String day, String startHour, String endHour) {
         this.doctor = doctor;
         this.day = day;
-        this.hour = hour;
+        this.startHour = startHour;
+        this.endHour = endHour;
     }
 
     public int getId() {
@@ -53,21 +57,29 @@ public class OfficeHours {
         this.day = day;
     }
 
-    public String getHour() {
-        return hour;
+    public String getStartHour() {
+        return startHour;
     }
 
-    public void setHour(String hour) {
-        this.hour = hour;
+    public void setStartHour(String startHour) {
+        this.startHour = startHour;
+    }
+
+    public String getEndHour() {
+        return endHour;
+    }
+
+    public void setEndHour(String endHour) {
+        this.endHour = endHour;
     }
 
     @Override
     public String toString() {
         return "OfficeHours{" +
-                "id=" + id +
-                ", doctor=" + doctor +
+                "doctor=" + doctor +
                 ", day='" + day + '\'' +
-                ", hour='" + hour + '\'' +
+                ", startHour='" + startHour + '\'' +
+                ", endHour='" + endHour + '\'' +
                 '}';
     }
 }
