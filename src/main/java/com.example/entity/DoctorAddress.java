@@ -75,7 +75,7 @@ public class DoctorAddress {
 
     @Override
     public String toString() {
-        return "PatientAddress{" +
+        return "DoctorAddress{" +
                 "id=" + id +
                 ", house_number='" + house_number + '\'' +
                 ", street='" + street + '\'' +
