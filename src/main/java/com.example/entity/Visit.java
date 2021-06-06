@@ -18,7 +18,7 @@ public class Visit {
     private Patient patient;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "patient_id")
+    @JoinColumn(name = "doctor_id")
     private Doctor doctor;
 
     @Column(name = "is_examination")
@@ -26,6 +26,9 @@ public class Visit {
 
     @Column(name = "patient_description")
     private String patientDescription;
+
+    @Column(name = "doctor_description")
+    private String doctorDescription;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "prescription_id")
@@ -43,13 +46,16 @@ public class Visit {
     public Visit() {
     }
 
-    public Visit(Patient patient, Doctor doctor, boolean isExamination, String patientDescription, Date registrationDate, Timestamp visitDate) {
+    public Visit(Patient patient, Doctor doctor, boolean isExamination, String patientDescription, String doctorDescription, Prescription prescription, Date registrationDate, Timestamp visitDate, String cancelCause) {
         this.patient = patient;
         this.doctor = doctor;
         this.isExamination = isExamination;
         this.patientDescription = patientDescription;
+        this.doctorDescription = doctorDescription;
+        this.prescription = prescription;
         this.registrationDate = registrationDate;
         this.visitDate = visitDate;
+        this.cancelCause = cancelCause;
     }
 
     public int getId() {
@@ -92,6 +98,14 @@ public class Visit {
         this.patientDescription = patientDescription;
     }
 
+    public String getDoctorDescription() {
+        return doctorDescription;
+    }
+
+    public void setDoctorDescription(String doctorDescription) {
+        this.doctorDescription = doctorDescription;
+    }
+
     public Prescription getPrescription() {
         return prescription;
     }
@@ -122,5 +136,20 @@ public class Visit {
 
     public void setCancelCause(String cancelCause) {
         this.cancelCause = cancelCause;
+    }
+
+    @Override
+    public String toString() {
+        return "Visit{" +
+                "patient=" + patient +
+                ", doctor=" + doctor +
+                ", isExamination=" + isExamination +
+                ", patientDescription='" + patientDescription + '\'' +
+                ", doctorDescription='" + doctorDescription + '\'' +
+                ", prescription=" + prescription +
+                ", registrationDate=" + registrationDate +
+                ", visitDate=" + visitDate +
+                ", cancelCause='" + cancelCause + '\'' +
+                '}';
     }
 }
