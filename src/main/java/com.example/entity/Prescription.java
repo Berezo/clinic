@@ -78,8 +78,6 @@ public class Prescription {
     @Override
     public String toString() {
         return "Prescription{" +
-                "patient=" + patient +
-                ", doctor=" + doctor +
                 ", description='" + description + '\'' +
                 ", medicines='" + medicines + '\'' +
                 '}';
