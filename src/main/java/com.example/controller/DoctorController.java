@@ -1,10 +1,10 @@
 package com.example.controller;
 
-import com.example.entity.DoctorAddress;
-import com.example.service.DoctorAddressService;
+import com.example.entity.Doctor;
+import com.example.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,18 +12,25 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/doctor")
+@RequestMapping("/doctors")
 public class DoctorController {
-    private DoctorAddressService doctorAddressService;
+    private DoctorService doctorService;
+
 
     @Autowired
-    public void setDoctorAddressService(DoctorAddressService doctorAddressService) {
-        this.doctorAddressService = doctorAddressService;
+    public void setDoctorService(DoctorService doctorService) {
+        this.doctorService = doctorService;
     }
 
-    @GetMapping("/all")
-    public List<DoctorAddress> doctorAddresses(){
-        List<DoctorAddress> addresses = doctorAddressService.getDoctorAddresses();
-        return addresses;
+    @GetMapping("")
+    public List<Doctor> getDoctors(){
+        List<Doctor> doctors = doctorService.getDoctors();
+        return doctors;
+    }
+
+    @RequestMapping("/{id}")
+    public Doctor getDoctor(@PathVariable(value = "id")int id){
+        Doctor doctor = doctorService.getDoctor(id);
+        return doctor;
     }
 }
