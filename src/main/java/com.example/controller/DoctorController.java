@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.entity.Doctor;
+import com.example.entity.DoctorAddress;
 import com.example.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,9 +29,15 @@ public class DoctorController {
         return doctors;
     }
 
-    @RequestMapping("/{id}")
+    @GetMapping("/{id}")
     public Doctor getDoctor(@PathVariable(value = "id")int id){
         Doctor doctor = doctorService.getDoctor(id);
         return doctor;
+    }
+
+    @GetMapping("/{id}/address")
+    public DoctorAddress getDoctorAddress(@PathVariable(value = "id")int id){
+        DoctorAddress doctorAddress = doctorService.getDoctorAddress(id);
+        return doctorAddress;
     }
 }

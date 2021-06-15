@@ -27,4 +27,9 @@ public class DoctorService {
     public Doctor getDoctor(int id){
         return doctorDAO.getDoctor(id);
     }
+
+    @Transactional
+    public DoctorAddress getDoctorAddress(int id){
+        return doctorDAO.getDoctor(id).getAddress();
+    }
 }
