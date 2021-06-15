@@ -30,10 +30,10 @@ public class DoctorAddressDAO {
 //        session.save(doctorAddress);
 //    }
 //
-//    public DoctorAddress getDoctorAddress(int id){
-//        Session session = sessionFactory.getCurrentSession();
-//        return session.get(DoctorAddress.class, id);
-//    }
+    public DoctorAddress getDoctorAddress(int id){
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(DoctorAddress.class, id);
+    }
 //
 //    public void deleteDoctorAddress(int id){
 //
