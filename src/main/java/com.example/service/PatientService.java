@@ -3,6 +3,7 @@ package com.example.service;
 import com.example.dao.PatientAddressDAO;
 import com.example.dao.PatientDAO;
 import com.example.entity.Patient;
+import com.example.entity.PatientAddress;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,5 +27,10 @@ public class PatientService {
     @Transactional
     public Patient getPatient(int id){
         return patientDAO.getPatient(id);
+    }
+
+    @Transactional
+    public PatientAddress getPatientAddress(int id){
+        return patientDAO.getPatient(id).getAddress();
     }
 }

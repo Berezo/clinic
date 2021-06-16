@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.entity.Patient;
+import com.example.entity.PatientAddress;
 import com.example.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,5 +32,11 @@ public class PatientRestController {
     public Patient getPatient(@PathVariable(value = "id")int id){
         Patient patient = patientService.getPatient(id);
         return patient;
+    }
+
+    @GetMapping("/patient/{id}/address")
+    public PatientAddress getPatientAddress(@PathVariable(value = "id")int id){
+        PatientAddress patientAddress = patientService.getPatientAddress(id);
+        return patientAddress;
     }
 }
