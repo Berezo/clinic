@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/patients")
-public class PatientController {
+@RequestMapping("/api")
+public class PatientRestController {
 
     private PatientService patientService;
 
@@ -21,13 +21,13 @@ public class PatientController {
         this.patientService = patientService;
     }
 
-    @GetMapping("")
+    @GetMapping("/patient")
     public List<Patient> getPatients(){
         List<Patient> patients = patientService.getPatients();
         return patients;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/patient/{id}")
     public Patient getPatient(@PathVariable(value = "id")int id){
         Patient patient = patientService.getPatient(id);
         return patient;
