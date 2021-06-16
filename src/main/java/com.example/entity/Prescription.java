@@ -1,5 +1,7 @@
 package com.example.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,10 +15,12 @@ public class Prescription {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="patient_id")
+    @JsonIgnoreProperties({"first_name", "surname", "address"})
     private Patient patient;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="doctor_id")
+    @JsonIgnoreProperties({"first_name", "surname", "is_specialist", "address"})
     private Doctor doctor;
 
     @Column(name = "description")
