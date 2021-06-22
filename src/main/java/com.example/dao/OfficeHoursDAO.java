@@ -29,4 +29,9 @@ public class OfficeHoursDAO {
         Session session = sessionFactory.getCurrentSession();
         return session.get(OfficeHours.class, id);
     }
+    public int saveOfficeHours(OfficeHours officeHours){
+        Session currentSession=sessionFactory.getCurrentSession();
+        currentSession.save(officeHours);
+        return officeHours.getId();
+    }
 }

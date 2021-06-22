@@ -29,4 +29,13 @@ public class PrescriptionDAO {
         Session session = sessionFactory.getCurrentSession();
         return session.get(Prescription.class, id);
     }
+
+    public int savePrescription(Prescription prescription){
+        Session session=sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.save(prescription);
+        session.getTransaction().commit();
+        return prescription.getId();
+
+    }
 }

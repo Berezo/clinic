@@ -4,10 +4,7 @@ import com.example.entity.Patient;
 import com.example.entity.PatientAddress;
 import com.example.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -38,5 +35,15 @@ public class PatientRestController {
     public PatientAddress getPatientAddress(@PathVariable(value = "id")int id){
         PatientAddress patientAddress = patientService.getPatientAddress(id);
         return patientAddress;
+    }
+    @GetMapping("/savePatient/{name}/{surname}/{address_id}")
+    public Patient savePatient(@PathVariable(value="name")String name,@PathVariable(value="surname")String surname,@PathVariable(value="address_id")int address_id){
+        Patient patient=new Patient();
+        patient.setFirst_name(name);
+        patient.setSurname(surname);
+        PatientAddress patientAddress=patientService.getPatientAddress(address_id);
+        patient.setAddress(patientAddress);
+        int id=patientService.savePatient(patient);
+        return patientService.getPatient(id);
     }
 }

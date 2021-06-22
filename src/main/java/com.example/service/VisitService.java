@@ -18,4 +18,7 @@ public class VisitService {
 
     @Transactional
     public Visit getVisit(int id){ return visitDAO.getVisit(id);}
+
+    @Transactional
+    public int saveVisit(Visit visit){return visitDAO.saveVisit(visit);}
 }

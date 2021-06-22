@@ -22,4 +22,7 @@ public class PrescriptionService {
     public Prescription getPrescription(int id){
         return prescriptionDAO.getPrescription(id);
     }
+
+    @Transactional
+    public int savePrescription(Prescription prescription){return prescriptionDAO.savePrescription( prescription);}
 }

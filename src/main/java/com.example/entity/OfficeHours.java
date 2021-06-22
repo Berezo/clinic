@@ -3,11 +3,12 @@ package com.example.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.sql.Time;
 
 @Entity
 @Table(name="office_hours")
 public class OfficeHours {
-
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id")
     @Id
     private int id;
@@ -20,20 +21,20 @@ public class OfficeHours {
     @Column(name = "day")
     private String day;
 
-    @Column(name = "start_hour")
-    private String startHour;
+    @Column(name = "hour")
+    private Time startHour;
 
-    @Column(name = "end_hour")
-    private String endHour;
+    //@Column(name = "end_hour")
+    //private String endHour;
 
     public OfficeHours() {
     }
 
-    public OfficeHours(Doctor doctor, String day, String startHour, String endHour) {
+    public OfficeHours(Doctor doctor, String day, Time startHour, String endHour) {
         this.doctor = doctor;
         this.day = day;
         this.startHour = startHour;
-        this.endHour = endHour;
+        //this.endHour = endHour;
     }
 
     public int getId() {
@@ -60,21 +61,20 @@ public class OfficeHours {
         this.day = day;
     }
 
-    public String getStartHour() {
+    public Time getStartHour() {
         return startHour;
     }
 
-    public void setStartHour(String startHour) {
+    public void setStartHour(Time startHour) {
         this.startHour = startHour;
     }
 
-    public String getEndHour() {
-        return endHour;
-    }
+    //public String getEndHour() {
+      //  return endHour;}
 
-    public void setEndHour(String endHour) {
-        this.endHour = endHour;
-    }
+
+   // public void setEndHour(String endHour) { this.endHour = endHour;}
+
 
     @Override
     public String toString() {
@@ -82,7 +82,7 @@ public class OfficeHours {
                 "doctor=" + doctor +
                 ", day='" + day + '\'' +
                 ", startHour='" + startHour + '\'' +
-                ", endHour='" + endHour + '\'' +
+                ", endHour='" +  + '\'' +
                 '}';
     }
 }

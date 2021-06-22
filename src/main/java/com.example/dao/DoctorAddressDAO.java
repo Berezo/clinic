@@ -38,4 +38,9 @@ public class DoctorAddressDAO {
 //    public void deleteDoctorAddress(int id){
 //
 //    }
+    public int saveDoctorAddress(DoctorAddress doctorAddress){
+        Session session=sessionFactory.getCurrentSession();
+        session.save(doctorAddress);
+        return doctorAddress.getId();
+    }
 }

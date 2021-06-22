@@ -27,4 +27,10 @@ public class VisitDAO {
         Session session = sessionFactory.getCurrentSession();
         return session.get(Visit.class, id);
     }
+
+    public int saveVisit(Visit visit){
+        Session session=sessionFactory.getCurrentSession();
+        session.save(visit);
+        return visit.getId();
+    }
 }
