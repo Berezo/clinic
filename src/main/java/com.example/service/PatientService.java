@@ -31,6 +31,12 @@ public class PatientService {
 
     @Transactional
     public PatientAddress getPatientAddress(int id){
-        return patientDAO.getPatient(id).getAddress();
+        return patientAddressDAO.getPatientAddress(id);};//getPatient(id).getAddress();
+
+
+    @Transactional
+    public int savePatient(Patient patient){
+        return patientDAO.savePatient(patient);
+
     }
 }

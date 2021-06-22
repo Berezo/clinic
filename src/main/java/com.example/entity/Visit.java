@@ -45,7 +45,10 @@ public class Visit {
     @Column(name = "visit_date")
     private Timestamp visitDate;
 
-    @Column(name = "cancel_cause")
+    @Column(name="visit_made")
+    private boolean visit_made;
+
+    @Column(name = "cancel_couse")
     private String cancelCause;
 
     public Visit() {
@@ -141,6 +144,14 @@ public class Visit {
 
     public void setCancelCause(String cancelCause) {
         this.cancelCause = cancelCause;
+    }
+
+    public boolean isVisit_made() {
+        return visit_made;
+    }
+
+    public void setVisit_made(boolean visit_made) {
+        this.visit_made = visit_made;
     }
 
     @Override

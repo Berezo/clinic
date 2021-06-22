@@ -12,7 +12,7 @@ public class PatientAddress {
     private int id;
 
     @Column(name = "house_number")
-    private String house_number;
+    private int  house_number;
 
     @Column(name="street")
     private String street;
@@ -26,7 +26,7 @@ public class PatientAddress {
     public PatientAddress() {
     }
 
-    public PatientAddress(String house_number, String street, String city, String zip_code) {
+    public PatientAddress(int house_number, String street, String city, String zip_code) {
         this.house_number = house_number;
         this.street = street;
         this.city = city;
@@ -41,11 +41,11 @@ public class PatientAddress {
         this.id = id;
     }
 
-    public String getHouse_number() {
+    public int getHouse_number() {
         return house_number;
     }
 
-    public void setHouse_number(String house_number) {
+    public void setHouse_number(int house_number) {
         this.house_number = house_number;
     }
 

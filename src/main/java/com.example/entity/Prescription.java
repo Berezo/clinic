@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "prescription")
+@Table(name="prescription")
 public class Prescription {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)

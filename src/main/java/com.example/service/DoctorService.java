@@ -30,6 +30,15 @@ public class DoctorService {
 
     @Transactional
     public DoctorAddress getDoctorAddress(int id){
-        return doctorDAO.getDoctor(id).getAddress();
+        return doctorAddressDAO.getDoctorAddress(id); // getDoctor(id).getAddress();
     }
+
+    @Transactional
+    public int saveDoctor(Doctor doctor){
+         return doctorDAO.saveDoctor( doctor);
+
+    }
+
+    @Transactional
+    public int saveDoctorAddress(DoctorAddress doctorAddress){return doctorAddressDAO.saveDoctorAddress(doctorAddress);}
 }

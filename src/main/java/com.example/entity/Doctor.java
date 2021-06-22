@@ -13,7 +13,7 @@ public class Doctor {
     @Id
     private int id;
 
-    @Column(name="first_name")
+    @Column(name="name")
     private String first_name;
 
     @Column(name="surname")

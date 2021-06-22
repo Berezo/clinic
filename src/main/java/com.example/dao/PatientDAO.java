@@ -30,4 +30,10 @@ public class PatientDAO {
         Session session = sessionFactory.getCurrentSession();
         return session.get(Patient.class, id);
     }
+    public int savePatient(Patient patient){
+        Session session=sessionFactory.getCurrentSession();
+        session.save(patient);
+        return patient.getId();
+    }
+
 }
