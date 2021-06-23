@@ -17,12 +17,12 @@ public class Visit {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(columnDefinition="integer", name = "patient_id")
-    @JsonIgnoreProperties({"first_name", "surname", "address"})
+//    @JsonIgnoreProperties({"first_name", "surname", "address"})
     private Patient patient;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(columnDefinition="integer", name = "doctor_id")
-    @JsonIgnoreProperties({"first_name", "surname", "is_specialist", "address"})
+//    @JsonIgnoreProperties({"first_name", "surname", "is_specialist", "address"})
     private Doctor doctor;
 
     @Column(name = "is_examination", nullable = false)
@@ -36,7 +36,7 @@ public class Visit {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(columnDefinition="integer", name = "prescription_id")
-    @JsonIgnoreProperties({"patient", "doctor", "is_specialist", "address"})
+//    @JsonIgnoreProperties({"patient", "doctor", "is_specialist", "address"})
     private Prescription prescription;
 
     @Column(name = "registration_date", nullable = false)
