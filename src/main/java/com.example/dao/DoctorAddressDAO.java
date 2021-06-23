@@ -24,23 +24,20 @@ public class DoctorAddressDAO {
         Query<DoctorAddress> query = session.createQuery(queryString,DoctorAddress.class);
         return query.getResultList();
     }
-//
-//    public void saveDoctorAddress(DoctorAddress doctorAddress){
-//        Session session = sessionFactory.getCurrentSession();
-//        session.save(doctorAddress);
-//    }
-//
+
     public DoctorAddress getDoctorAddress(int id){
         Session session = sessionFactory.getCurrentSession();
         return session.get(DoctorAddress.class, id);
     }
-//
-//    public void deleteDoctorAddress(int id){
-//
-//    }
+
     public int saveDoctorAddress(DoctorAddress doctorAddress){
         Session session=sessionFactory.getCurrentSession();
         session.saveOrUpdate(doctorAddress);
         return doctorAddress.getId();
+    }
+
+    public void deleteDoctorAddress(int id){
+        Session session=sessionFactory.getCurrentSession();
+        session.delete(getDoctorAddress(id));
     }
 }
