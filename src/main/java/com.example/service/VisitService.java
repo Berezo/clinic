@@ -21,4 +21,7 @@ public class VisitService {
 
     @Transactional
     public int saveVisit(Visit visit){return visitDAO.saveVisit(visit);}
+
+    @Transactional
+    public int updateVisit(Visit visit) {return visitDAO.updateVisit(visit); }
 }

@@ -91,12 +91,11 @@ public class VisitDetailsRequestModel {
         this.cancelCause = cancelCause;
     }
 
-    public boolean isVisit_made() {
-        return visitMade;
-    }
+    public boolean isVisitMade() { return visitMade; }
 
-    public void setVisit_made(boolean visitMade) {
+    public void setVisitMade(boolean visitMade) {
         this.visitMade = visitMade;
     }
+
 }
 

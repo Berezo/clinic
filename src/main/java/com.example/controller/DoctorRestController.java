@@ -47,18 +47,6 @@ public class DoctorRestController {
         return doctorAddress;
     }
 
-//    @GetMapping("/addDoctor/{name}/{surname}/{is_specialist}/{adress_id}")
-//    public Doctor  saveDoctor(@PathVariable(value="name")String name,@PathVariable(value="surname")String surname,@PathVariable(value="is_specialist")boolean is_specialist,@PathVariable(value="adress_id")int adress_id){
-//        doctorAddress= doctorService.getDoctorAddress(adress_id);
-//        Doctor doctor=new Doctor();
-//        doctor.setFirst_name(name);
-//        doctor.setSurname(surname);
-//        doctor.setIs_specialist(is_specialist);
-//        doctor.setAddress(doctorAddress);
-//        int id=doctorService.saveDoctor(doctor);
-//        return doctorService.getDoctor(id);
-//    }
-
     @PostMapping(value="/doctor",
                  consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
                  produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
@@ -70,10 +58,20 @@ public class DoctorRestController {
     }
 
     @PostMapping(value="/doctor/address",
-            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
-            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+                 consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+                 produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public DoctorAddress createDoctorAddress(@RequestBody DoctorAddressDetailsRequestModel requestDoctorAddressDetails) {
         DoctorAddress doctorAddress = new DoctorAddress();
+        BeanUtils.copyProperties(requestDoctorAddressDetails, doctorAddress);
+        doctorService.saveDoctorAddress(doctorAddress);
+        return doctorAddress;
+    }
+
+    @PutMapping(value="/doctor/address/{id}",
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public DoctorAddress updateDoctorAddress(@PathVariable(value = "id")int id, @RequestBody DoctorAddressDetailsRequestModel requestDoctorAddressDetails){
+        DoctorAddress doctorAddress = doctorService.getDoctorAddress(id);
         BeanUtils.copyProperties(requestDoctorAddressDetails, doctorAddress);
         doctorService.saveDoctorAddress(doctorAddress);
         return doctorAddress;
