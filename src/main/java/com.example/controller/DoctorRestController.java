@@ -23,25 +23,33 @@ public class DoctorRestController {
         this.doctorService = doctorService;
     }
 
-    @GetMapping("/doctor")
+    @GetMapping(value = "/doctor",
+                consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+                produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public List<Doctor> getDoctors(){
         List<Doctor> doctors = doctorService.getDoctors();
         return doctors;
     }
 
-    @GetMapping("/doctor/{id}")
+    @GetMapping(value = "/doctor/{id}",
+                consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+                produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public Doctor getDoctor(@PathVariable(value = "id")int id){
         Doctor doctor = doctorService.getDoctor(id);
         return doctor;
     }
 
-    @GetMapping("/doctor/address")
+    @GetMapping(value = "/doctor/address",
+                consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+                produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public List<DoctorAddress> getDoctorsAddresses(){
         List<DoctorAddress> doctorAddresses = doctorService.getDoctorsAddress();
         return doctorAddresses;
     }
 
-    @GetMapping("/doctor/address/{id}")
+    @GetMapping(value = "/doctor/address/{id}",
+                consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+                produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public DoctorAddress getDoctorAddress(@PathVariable(value = "id")int id){
         DoctorAddress doctorAddress = doctorService.getDoctorAddress(id);
         return doctorAddress;
@@ -75,5 +83,10 @@ public class DoctorRestController {
         BeanUtils.copyProperties(requestDoctorAddressDetails, doctorAddress);
         doctorService.saveDoctorAddress(doctorAddress);
         return doctorAddress;
+    }
+
+    @DeleteMapping(path="/doctor/address/{id}")
+    public void deleteDoctorAddress(@PathVariable (value = "id")int id) {
+            doctorService.deleteDoctorAddress(id);
     }
 }
