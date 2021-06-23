@@ -21,20 +21,20 @@ public class OfficeHours {
     @Column(name = "day")
     private String day;
 
-    @Column(name = "hour")
+    @Column(name = "start_hour")
     private Time startHour;
 
-    //@Column(name = "end_hour")
-    //private String endHour;
+    @Column(name = "end_hour")
+    private Time endHour;
 
     public OfficeHours() {
     }
 
-    public OfficeHours(Doctor doctor, String day, Time startHour, String endHour) {
+    public OfficeHours(Doctor doctor, String day, Time startHour, Time endHour) {
         this.doctor = doctor;
         this.day = day;
         this.startHour = startHour;
-        //this.endHour = endHour;
+        this.endHour = endHour;
     }
 
     public int getId() {
@@ -69,11 +69,9 @@ public class OfficeHours {
         this.startHour = startHour;
     }
 
-    //public String getEndHour() {
-      //  return endHour;}
+    public Time getEndHour() { return endHour; }
 
-
-   // public void setEndHour(String endHour) { this.endHour = endHour;}
+    public void setEndHour(Time endHour) { this.endHour = endHour;}
 
 
     @Override

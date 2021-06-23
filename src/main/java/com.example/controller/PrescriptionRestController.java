@@ -3,10 +3,13 @@ package com.example.controller;
 import com.example.entity.Doctor;
 import com.example.entity.Patient;
 import com.example.entity.Prescription;
+import com.example.model.PrescriptionDetailsRequestModel;
 import com.example.service.DoctorService;
 import com.example.service.PatientService;
 import com.example.service.PrescriptionService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,16 +40,26 @@ public class PrescriptionRestController {
         return prescription;
     }
 
-    @GetMapping("/savePrescription/{patient_id}/{doctor_id}/{description}/{medicines}")
-    public Prescription savePrescription(@PathVariable(value="patient_id")int patient_id,@PathVariable(value="doctor_id")int doctor_id,@PathVariable(value="description")String description,@PathVariable(value="medicines")String medicines){
-        doctor=doctorService.getDoctor(doctor_id);
-        patient=patientService.getPatient(patient_id);
-        Prescription prescription=new Prescription();
-        prescription.setMedicines(medicines);
-        prescription.setDescription(description);
-        prescription.setDoctor(doctor);
-        prescription.setPatient(patient);
-        int id=prescriptionService.savePrescription(prescription);
-        return prescriptionService.getPrescription(id);
+//    @GetMapping("/savePrescription/{patient_id}/{doctor_id}/{description}/{medicines}")
+//    public Prescription savePrescription(@PathVariable(value="patient_id")int patient_id,@PathVariable(value="doctor_id")int doctor_id,@PathVariable(value="description")String description,@PathVariable(value="medicines")String medicines){
+//        doctor=doctorService.getDoctor(doctor_id);
+//        patient=patientService.getPatient(patient_id);
+//        Prescription prescription=new Prescription();
+//        prescription.setMedicines(medicines);
+//        prescription.setDescription(description);
+//        prescription.setDoctor(doctor);
+//        prescription.setPatient(patient);
+//        int id=prescriptionService.savePrescription(prescription);
+//        return prescriptionService.getPrescription(id);
+//    }
+
+    @PostMapping(value="/prescription",
+                 consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+                 produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public Prescription createPrescription(@RequestBody PrescriptionDetailsRequestModel requestPrescriptionModel){
+        Prescription prescription = new Prescription();
+        BeanUtils.copyProperties(requestPrescriptionModel, prescription);
+        prescriptionService.savePrescription(prescription);
+        return prescription;
     }
 }

@@ -18,7 +18,7 @@ public class DoctorAddressDAO {
         this.sessionFactory = sessionFactory;
     }
 
-    public List<DoctorAddress> getDoctorAddresses(){
+    public List<DoctorAddress> getDoctorsAddresses(){
         Session session = sessionFactory.getCurrentSession();
         String queryString = "SELECT a FROM DoctorAddress a";
         Query<DoctorAddress> query = session.createQuery(queryString,DoctorAddress.class);
@@ -40,7 +40,7 @@ public class DoctorAddressDAO {
 //    }
     public int saveDoctorAddress(DoctorAddress doctorAddress){
         Session session=sessionFactory.getCurrentSession();
-        session.save(doctorAddress);
+        session.saveOrUpdate(doctorAddress);
         return doctorAddress.getId();
     }
 }

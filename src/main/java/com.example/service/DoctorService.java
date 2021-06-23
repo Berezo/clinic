@@ -29,14 +29,14 @@ public class DoctorService {
     }
 
     @Transactional
-    public DoctorAddress getDoctorAddress(int id){
-        return doctorAddressDAO.getDoctorAddress(id); // getDoctor(id).getAddress();
-    }
+    public int saveDoctor(Doctor doctor){ return doctorDAO.saveDoctor( doctor); }
 
     @Transactional
-    public int saveDoctor(Doctor doctor){
-         return doctorDAO.saveDoctor( doctor);
+    public List<DoctorAddress> getDoctorsAddress(){ return doctorAddressDAO.getDoctorsAddresses(); }
 
+    @Transactional
+    public DoctorAddress getDoctorAddress(int id){
+        return doctorAddressDAO.getDoctorAddress(id); // getDoctor(id).getAddress();
     }
 
     @Transactional

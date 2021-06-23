@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.entity.Doctor;
 import com.example.entity.DoctorAddress;
+import com.example.model.DoctorAddressDetailsRequestModel;
 import com.example.model.DoctorDetailsRequestModel;
 import com.example.service.DoctorService;
 import org.springframework.beans.BeanUtils;
@@ -34,7 +35,13 @@ public class DoctorRestController {
         return doctor;
     }
 
-    @GetMapping("/doctor/{id}/address")
+    @GetMapping("/doctor/address")
+    public List<DoctorAddress> getDoctorsAddresses(){
+        List<DoctorAddress> doctorAddresses = doctorService.getDoctorsAddress();
+        return doctorAddresses;
+    }
+
+    @GetMapping("/doctor/address/{id}")
     public DoctorAddress getDoctorAddress(@PathVariable(value = "id")int id){
         DoctorAddress doctorAddress = doctorService.getDoctorAddress(id);
         return doctorAddress;
@@ -62,4 +69,13 @@ public class DoctorRestController {
         return doctor;
     }
 
+    @PostMapping(value="/doctor/address",
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public DoctorAddress createDoctorAddress(@RequestBody DoctorAddressDetailsRequestModel requestDoctorAddressDetails) {
+        DoctorAddress doctorAddress = new DoctorAddress();
+        BeanUtils.copyProperties(requestDoctorAddressDetails, doctorAddress);
+        doctorService.saveDoctorAddress(doctorAddress);
+        return doctorAddress;
+    }
 }
