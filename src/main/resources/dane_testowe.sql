@@ -32,7 +32,7 @@
 -- INSERT INTO `office_hours`(`doctor_id`, `day`, `start_hour`, `end_hour`) VALUES (3, 'Thurday', '16:15', '20:00');
 
 -- INSERT INTO `visit`(`patient_id`, `doctor_id`, `is_examination`, `patient_description`, `doctor_description`, `prescription_id`, `registration_date`, `visit_date`, `visit_made`, `cancel_cause`)
--- VALUES(1,1,false,'boli mnie brzuch.',null,null,'2021-05-12','2021-05-13 8:15', null, null);
+-- VALUES(1,1,false,'boli mnie brzuch.',null,null,'2021-05-12','2021-05-13 8:15', false, null);
 
 -- INSERT INTO `prescription`(`patient_id`, `doctor_id`, `description`, `medicines`)
 -- VALUES(2,2,'dwa razy dziennie rano i wieczorek brać 1 tabletkę', 'rutinoskorbin');
@@ -40,27 +40,31 @@
 -- VALUES(2,2,false,'Nic nie wiedzę.','Pacient nie widział, ale już widzi.',1,'2021-05-21','2021-05-22 8:15', true, null);
 
 -- INSERT INTO `visit`(`patient_id`, `doctor_id`, `is_examination`, `patient_description`, `doctor_description`, `prescription_id`, `registration_date`, `visit_date`, `visit_made`, `cancel_cause`)
--- VALUES(3,3,false,'Mam katar',null,null,'2021-05-21','2021-05-22 16:30', false, 'Przestałem mieć katar');
+-- VALUES(3,3,false,'Mam katar',null, null, '2021-05-21','2021-05-22 16:30', false, 'Przestałem mieć katar');
 
-SELECT * FROM patient JOIN patient_address ON patient.address_id = patient_address.id;
-
-
-SELECT * FROM doctor JOIN doctor_address ON doctor.address_id = doctor_address.id;
+-- SELECT * FROM patient JOIN patient_address ON patient.address_id = patient_address.id;
 
 
-SELECT * FROM prescription;
+-- SELECT * FROM doctor JOIN doctor_address ON doctor.address_id = doctor_address.id;
 
 
-SELECT v.id, v.is_examination, v.patient_description, v.doctor_description, v.registration_date, v.visit_date, v.visit_made, v.cancel_cause,
-d.first_name, d.surname, 
-p.first_name AS 'patient_first_name', p.surname AS 'patient_surname', 
-pre.description, pre.medicines
-FROM visit as v
-JOIN doctor AS d ON v.doctor_id=d.id
-JOIN patient AS p ON v.patient_id=p.id
-LEFT JOIN prescription AS pre ON v.prescription_id = pre.id;
+-- SELECT * FROM prescription;
 
 
-SELECT d.first_name, d.surname, o.day, o.start_hour, o.end_hour 
-FROM doctor AS d 
-JOIN office_hours AS o ON o.doctor_id=d.id;
+-- SELECT v.id, v.is_examination, v.patient_description, v.doctor_description, v.registration_date, v.visit_date, v.visit_made, v.cancel_cause,
+-- d.first_name, d.surname, 
+-- p.first_name AS 'patient_first_name', p.surname AS 'patient_surname', 
+-- pre.description, pre.medicines
+-- FROM visit as v
+-- JOIN doctor AS d ON v.doctor_id=d.id
+-- JOIN patient AS p ON v.patient_id=p.id
+-- LEFT JOIN prescription AS pre ON v.prescription_id = pre.id;
+
+
+-- SELECT d.first_name, d.surname, o.day, o.start_hour, o.end_hour 
+-- FROM doctor AS d 
+-- JOIN office_hours AS o ON o.doctor_id=d.id;
+
+-- select * from visit;
+
+select * from doctor;

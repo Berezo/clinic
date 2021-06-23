@@ -13,13 +13,13 @@ public class Doctor {
     @Id
     private int id;
 
-    @Column(name="name")
+    @Column(name="first_name", nullable = false)
     private String first_name;
 
-    @Column(name="surname")
+    @Column(name="surname", nullable = false)
     private String surname;
 
-    @Column(name="is_specialist")
+    @Column(name="is_specialist", nullable = false)
     private boolean is_specialist;
 
     @OneToOne(cascade = CascadeType.ALL)

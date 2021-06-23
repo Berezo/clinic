@@ -16,16 +16,16 @@ public class Visit {
     private int id;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "patient_id")
+    @JoinColumn(columnDefinition="integer", name = "patient_id")
     @JsonIgnoreProperties({"first_name", "surname", "address"})
     private Patient patient;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "doctor_id")
+    @JoinColumn(columnDefinition="integer", name = "doctor_id")
     @JsonIgnoreProperties({"first_name", "surname", "is_specialist", "address"})
     private Doctor doctor;
 
-    @Column(name = "is_examination")
+    @Column(name = "is_examination", nullable = false)
     private boolean isExamination;
 
     @Column(name = "patient_description")
@@ -35,20 +35,20 @@ public class Visit {
     private String doctorDescription;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "prescription_id")
+    @JoinColumn(columnDefinition="integer", name = "prescription_id")
     @JsonIgnoreProperties({"patient", "doctor", "is_specialist", "address"})
     private Prescription prescription;
 
-    @Column(name = "registration_date")
+    @Column(name = "registration_date", nullable = false)
     private Date registrationDate;
 
-    @Column(name = "visit_date")
+    @Column(name = "visit_date", nullable = false)
     private Timestamp visitDate;
 
     @Column(name="visit_made")
-    private boolean visit_made;
+    private boolean visitMade;
 
-    @Column(name = "cancel_couse")
+    @Column(name = "cancel_cause")
     private String cancelCause;
 
     public Visit() {
@@ -146,12 +146,12 @@ public class Visit {
         this.cancelCause = cancelCause;
     }
 
-    public boolean isVisit_made() {
-        return visit_made;
+    public boolean isVisitMade() {
+        return visitMade;
     }
 
-    public void setVisit_made(boolean visit_made) {
-        this.visit_made = visit_made;
+    public void setVisitMade(boolean visitMade) {
+        this.visitMade = visitMade;
     }
 
     @Override

@@ -30,7 +30,9 @@ public class VisitDAO {
 
     public int saveVisit(Visit visit){
         Session session=sessionFactory.getCurrentSession();
-        session.save(visit);
+        session.saveOrUpdate(visit);
         return visit.getId();
     }
+
+
 }
