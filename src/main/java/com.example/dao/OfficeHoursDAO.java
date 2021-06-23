@@ -30,8 +30,8 @@ public class OfficeHoursDAO {
         return session.get(OfficeHours.class, id);
     }
     public int saveOfficeHours(OfficeHours officeHours){
-        Session currentSession=sessionFactory.getCurrentSession();
-        currentSession.save(officeHours);
+        Session session=sessionFactory.getCurrentSession();
+        session.saveOrUpdate(officeHours);
         return officeHours.getId();
     }
 }

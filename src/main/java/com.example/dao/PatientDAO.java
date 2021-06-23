@@ -32,7 +32,7 @@ public class PatientDAO {
     }
     public int savePatient(Patient patient){
         Session session=sessionFactory.getCurrentSession();
-        session.save(patient);
+        session.saveOrUpdate(patient);
         return patient.getId();
     }
 

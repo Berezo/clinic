@@ -11,7 +11,7 @@ import java.util.List;
 
 @Repository
 public class PrescriptionDAO {
-    SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
     @Autowired
     public void setSessionFactory(SessionFactory sessionFactory) {
@@ -31,10 +31,8 @@ public class PrescriptionDAO {
     }
 
     public int savePrescription(Prescription prescription){
-        Session session=sessionFactory.getCurrentSession();
-        session.beginTransaction();
-        session.save(prescription);
-        session.getTransaction().commit();
+        Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(prescription);
         return prescription.getId();
 
     }

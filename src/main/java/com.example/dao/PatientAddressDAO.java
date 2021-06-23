@@ -29,4 +29,10 @@ public class PatientAddressDAO {
         Session session = sessionFactory.getCurrentSession();
         return session.get(PatientAddress.class, id);
     }
+
+    public int savePatientAddress(PatientAddress patientAddress){
+        Session session=sessionFactory.getCurrentSession();
+        session.saveOrUpdate(patientAddress);
+        return patientAddress.getId();
+    }
 }

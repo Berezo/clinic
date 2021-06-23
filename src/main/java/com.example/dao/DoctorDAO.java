@@ -31,8 +31,8 @@ public class DoctorDAO {
         return session.get(Doctor.class, id);
     }
     public int saveDoctor(Doctor doctor){
-        Session currentSession=sessionFactory.getCurrentSession();
-        currentSession.save(doctor);
+        Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(doctor);
         return doctor.getId();
 
     }
