@@ -36,4 +36,9 @@ public class PatientDAO {
         return patient.getId();
     }
 
+    public void deletePatient(int id){
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(getPatient(id));
+    }
+
 }

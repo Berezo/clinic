@@ -33,12 +33,19 @@ public class PatientService {
     public int savePatient(Patient patient){ return patientDAO.savePatient(patient); }
 
     @Transactional
+    public void deletePatient(int id){patientDAO.deletePatient(id);}
+
+    @Transactional
     public List<PatientAddress> getPatientAddresses(){ return patientAddressDAO.getPatientAddresses(); }
 
     @Transactional
     public PatientAddress getPatientAddress(int id){ return patientAddressDAO.getPatientAddress(id);}//getPatient(id).getAddress();
 
     @Transactional
-    public int savePatientAdress(PatientAddress patientAddress){ return patientAddressDAO.savePatientAddress(patientAddress); }
+    public int savePatientAddress(PatientAddress patientAddress){ return patientAddressDAO.savePatientAddress(patientAddress); }
 
+    @Transactional
+    public void deletePatientAddress(int id){
+        patientAddressDAO.deletePatientAddress(id);
+    }
 }
