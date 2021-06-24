@@ -116,7 +116,6 @@ public class DoctorRestController {
         }catch(DataIntegrityViolationException e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-
     }
 
 //    @PostMapping(value="/doctor/address",
