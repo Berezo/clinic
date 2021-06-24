@@ -30,10 +30,16 @@ public class DoctorDAO {
         Session session = sessionFactory.getCurrentSession();
         return session.get(Doctor.class, id);
     }
+
     public int saveDoctor(Doctor doctor){
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(doctor);
         return doctor.getId();
 
+    }
+
+    public void deleteDoctor(int id){
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(getDoctor(id));
     }
 }

@@ -32,6 +32,9 @@ public class DoctorService {
     public int saveDoctor(Doctor doctor){ return doctorDAO.saveDoctor( doctor); }
 
     @Transactional
+    public void deleteDoctor(int id){ doctorDAO.deleteDoctor(id); }
+
+    @Transactional
     public List<DoctorAddress> getDoctorsAddress(){ return doctorAddressDAO.getDoctorsAddresses(); }
 
     @Transactional
