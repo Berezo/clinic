@@ -35,4 +35,9 @@ public class PatientAddressDAO {
         session.saveOrUpdate(patientAddress);
         return patientAddress.getId();
     }
+
+    public void deletePatientAddress(int id){
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(getPatientAddress(id));
+    }
 }
