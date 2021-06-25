@@ -23,8 +23,6 @@ public class PatientRestController {
 
     private PatientService patientService;
 
-
-
     @Autowired
     public void setPatientService(PatientService patientService) {
         this.patientService = patientService;
