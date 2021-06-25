@@ -34,4 +34,12 @@ public class OfficeHoursDAO {
         session.saveOrUpdate(officeHours);
         return officeHours.getId();
     }
+
+    public List<OfficeHours> getOfficeHoursForDoctor(int id){
+        Session session = sessionFactory.getCurrentSession();
+        String queryString = "SELECT o FROM OfficeHours o WHERE o.doctor.id = :id";
+        Query<OfficeHours> query = session.createQuery(queryString,OfficeHours.class );
+        query.setParameter("id", id);
+        return query.getResultList();
+    }
 }
