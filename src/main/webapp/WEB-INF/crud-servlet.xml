@@ -67,8 +67,7 @@
         <sec:intercept-url pattern="/register" access="permitAll()"/>
         <sec:intercept-url pattern="/login" access="isAnonymous()"/>
         <sec:intercept-url pattern="/logout" access="isAuthenticated()"/>
-        <sec:intercept-url pattern="/error" access="permitAll()"/>
-<!--        <sec:intercept-url pattern="/**" access="hasRole('ADMIN')"/>-->
+        <sec:intercept-url pattern="/office-hours" access="isAuthenticated()"/>
         <sec:form-login login-page="/login"/>
         <sec:logout logout-success-url="/"/>
     </sec:http>
