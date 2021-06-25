@@ -29,7 +29,7 @@ public class DoctorService {
     }
 
     @Transactional
-    public int saveDoctor(Doctor doctor){ return doctorDAO.saveDoctor( doctor); }
+    public int saveDoctor(Doctor doctor){ return doctorDAO.saveDoctor(doctor); }
 
     @Transactional
     public void deleteDoctor(int id){ doctorDAO.deleteDoctor(id); }
