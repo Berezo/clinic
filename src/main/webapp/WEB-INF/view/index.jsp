@@ -14,5 +14,7 @@
 </head>
 <body>
     <li><a href="${contextPath}/office-hours/">Office Hours</a></li>
+    <li><a href="${contextPath}/register">Office Hours</a></li>
+    <li><a href="${contextPath}/login">Office Hours</a></li>
 </body>
 </html>
