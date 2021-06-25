@@ -19,16 +19,16 @@
     <table>
         <tbody>
         <tr>
-            <td><label for="login">Nazwa:</label></td>
-            <td><form:input path="login" id="login"  /></td>
+            <td><label for="username">Nazwa:</label></td>
+            <td><form:input path="username" id="username"  /></td>
         </tr>
         <tr>
-            <td><label for="first_name">Imie:</label></td>
-            <td><form:input path="first_name" id="first_name"  /></td>
+            <td><label for="first_name">Imię:</label></td>
+            <td><form:input path="patient.first_name" id="first_name"  /></td>
         </tr>
         <tr>
-            <td><label for="surname">Nazwisko:</label></td>
-            <td><form:input path="surname" id="surname"  /></td>
+            <td><label for="surname">Nazwa:</label></td>
+            <td><form:input path="patient.surname" id="surname"  /></td>
         </tr>
         <tr>
             <td><label for="password">Hasło:</label></td>
