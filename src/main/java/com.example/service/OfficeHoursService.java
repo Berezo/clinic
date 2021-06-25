@@ -22,4 +22,9 @@ public class OfficeHoursService {
 
     @Transactional
     public int saveOfficeHours(OfficeHours officeHours){return officeHoursDAO.saveOfficeHours(officeHours);}
+
+    @Transactional
+    public List<OfficeHours> getOfficeHoursForDoctor(int id){
+        return officeHoursDAO.getOfficeHoursForDoctor(id);
+    }
 }
