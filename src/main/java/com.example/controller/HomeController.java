@@ -2,7 +2,6 @@ package com.example.controller;
 
 
 import com.example.entity.Authority;
-import com.example.entity.Patient;
 import com.example.entity.User;
 import com.example.service.PatientService;
 import com.example.service.UserService;
@@ -35,32 +34,62 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping(value = "/register")
-    public String registerForm(Model model) {
+    @GetMapping(value = "/patient-register")
+    public String registerPatientForm(Model model) {
         model.addAttribute("user", new User());
-        model.addAttribute("patient", new Patient());
-        return "register";
+        return "patient-register";
     }
 
-    @PostMapping("/register")
-    public String saveUser(@ModelAttribute("user") User user, Model model) {
-        String validator = validate(user);
+    @PostMapping("/patient-register")
+    public String savePatient(@ModelAttribute("user") User user, Model model) {
+        String validator = validatePatient(user);
         if (!validator.isEmpty()) {
             model.addAttribute("validator", validator);
-            return "register";
+            return "patient-register";
         }
         user.setAuthorities(new Authority(user, "ROLE_PATIENT"));
         userService.saveUser(user);
         return "redirect:/login";
     }
 
-    private String validate(User user) {
+    private String validatePatient(User user) {
         if (userService.getUser(user.getUsername()) != null) {
             return "użytkownik o takiej nazwie istnieje";
         } else if (user.getUsername().isEmpty() || user.getPassword().isEmpty())
         {
             return "wypełnij wszystkie pola";
         } else if (user.getPatient().getFirst_name().isEmpty() || user.getPatient().getSurname().isEmpty())
+        {
+            return "wypełnij wszystkie pola";
+        }
+        return "";
+    }
+
+    @GetMapping("/doctor-register")
+    public String registerDoctorForm(Model model){
+        model.addAttribute("user", new User());
+        return "doctor-register";
+    }
+
+    @PostMapping("/doctor-register")
+    public String saveDoctor(@ModelAttribute("user") User user, Model model){
+        String validator = validateDoctor(user);
+        if (!validator.isEmpty()) {
+            model.addAttribute("validator", validator);
+            return "patient-register";
+        }
+        user.setAuthorities(new Authority(user, "ROLE_DOCTOR"));
+        userService.saveUser(user);
+        return "redirect:/login";
+    }
+
+    private String validateDoctor(User user){
+        if (userService.getUser(user.getUsername()) != null) {
+            return "użytkownik o takiej nazwie istnieje";
+        } else if (user.getUsername().isEmpty() || user.getPassword().isEmpty())
+        {
+            return "wypełnij wszystkie pola";
+        } else if (user.getDoctor().getFirst_name().isEmpty() || user.getDoctor().getSurname().isEmpty())
         {
             return "wypełnij wszystkie pola";
         }
