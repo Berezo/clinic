@@ -42,4 +42,9 @@ public class OfficeHoursDAO {
         query.setParameter("id", id);
         return query.getResultList();
     }
+
+    public void deleteOfficeHours(int id){
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(getOfficeHour(id));
+    }
 }
