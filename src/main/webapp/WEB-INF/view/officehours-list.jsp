@@ -15,19 +15,11 @@
             <th>End Hour</th>
         </tr>
         <c:forEach var="officeHours" items="${officeHours}" >
-<%--            <c:url var="update" value="/books/edit"><c:param name="bookId" value="${book.id}"/>--%>
-<%--            </c:url>--%>
-<%--                <c:url var="delete" value="/books/delete"><c:param name="bookId" value="${book.id}"/>--%>
-<%--            </c:url>--%>
             <tr>
                 <td>${officeHours.doctor.first_name} ${officeHours.doctor.surname}</td>
                 <td>${officeHours.day}</td>
                 <td>${officeHours.startHour}</td>
                 <td>${officeHours.endHour}</td>
-<%--                <sec:authorize access="hasRole('ADMIN')">--%>
-<%--                    <td><a href="${update}">edytuj</a></td>--%>
-<%--                    <td><a href="${delete}">usuń</a></td>--%>
-<%--                </sec:authorize>--%>
             </tr>
         </c:forEach>
     </table>
