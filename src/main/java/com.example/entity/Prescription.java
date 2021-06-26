@@ -13,16 +13,6 @@ public class Prescription {
     @Id
     private int id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="patient_id")
-    @JsonIgnoreProperties({"first_name", "surname", "address"})
-    private Patient patient;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="doctor_id")
-    @JsonIgnoreProperties({"first_name", "surname", "is_specialist", "address"})
-    private Doctor doctor;
-
     @Column(name = "description")
     private String description;
 
@@ -32,9 +22,7 @@ public class Prescription {
     public Prescription() {
     }
 
-    public Prescription(Patient patient, Doctor doctor, String description, String medicines) {
-        this.patient = patient;
-        this.doctor = doctor;
+    public Prescription(String description, String medicines) {
         this.description = description;
         this.medicines = medicines;
     }
@@ -45,22 +33,6 @@ public class Prescription {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
-
-    public Doctor getDoctor() {
-        return doctor;
-    }
-
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
     }
 
     public String getDescription() {

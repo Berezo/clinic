@@ -34,8 +34,8 @@ INSERT INTO `office_hours`(`doctor_id`, `day`, `start_hour`, `end_hour`) VALUES 
 INSERT INTO `visit`(`patient_id`, `doctor_id`, `is_examination`, `patient_description`, `doctor_description`, `prescription_id`, `registration_date`, `visit_date`, `visit_made`, `cancel_cause`)
 VALUES(1,1,false,'boli mnie brzuch.',null,null,'2021-05-12','2021-05-13 8:15', null, null);
 
-INSERT INTO `prescription`(`patient_id`, `doctor_id`, `description`, `medicines`)
-VALUES(2,2,'dwa razy dziennie rano i wieczorek brać 1 tabletkę', 'rutinoskorbin');
+INSERT INTO `prescription`(`description`, `medicines`)
+VALUES('dwa razy dziennie rano i wieczorek brać 1 tabletkę', 'rutinoskorbin');
 INSERT INTO `visit`(`patient_id`, `doctor_id`, `is_examination`, `patient_description`, `doctor_description`,`prescription_id`, `registration_date`, `visit_date`, `visit_made`, `cancel_cause`)
 VALUES(2,2,false,'Nic nie wiedzę.','Pacient nie widział, ale już widzi.',1,'2021-05-21','2021-05-22 8:15', true, null);
 

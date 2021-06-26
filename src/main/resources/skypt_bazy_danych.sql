@@ -58,13 +58,9 @@ CREATE TABLE `doctor`(
 
 CREATE TABLE `prescription`(
 	`id` INT AUTO_INCREMENT NOT NULL,
-    `patient_id` INT,
-    `doctor_id` INT,
     `description` VARCHAR(200),
     `medicines` VARCHAR(200),
     CONSTRAINT `prescription_pk` PRIMARY KEY(`id`),
-    CONSTRAINT `prescription_doctor_fk` FOREIGN KEY(`doctor_id`) REFERENCES `doctor`(`id`) ON DELETE SET NULL,
-    CONSTRAINT `prescription_patient_fk` FOREIGN KEY(`patient_id`) REFERENCES `patient`(`id`) ON DELETE SET NULL
     );
 
 CREATE TABLE `visit`(
