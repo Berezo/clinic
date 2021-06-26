@@ -20,19 +20,19 @@ INSERT INTO `doctor_address`(`house_number`, `street`, `city`, `zip_code`) VALUE
 INSERT INTO `doctor`(`first_name`, `surname`, `address_id`) VALUES ('Jim', 'Turk', 3);
 
 
-INSERT INTO `office_hours`(`doctor_id`, `day`, `start_hour`, `end_hour`) VALUES (1, 'Friday', '8:15', '16:15');
-INSERT INTO `office_hours`(`doctor_id`, `day`, `start_hour`, `end_hour`) VALUES (1, 'Monday', '8:15', '16:15');
-INSERT INTO `office_hours`(`doctor_id`, `day`, `start_hour`, `end_hour`) VALUES (1, 'Wednesday', '8:15', '16:15');
-INSERT INTO `office_hours`(`doctor_id`, `day`, `start_hour`, `end_hour`) VALUES (2, 'Tuesday', '8:15', '16:15');
-INSERT INTO `office_hours`(`doctor_id`, `day`, `start_hour`, `end_hour`) VALUES (2, 'Thurday', '8:15', '16:15');
-INSERT INTO `office_hours`(`doctor_id`, `day`, `start_hour`, `end_hour`) VALUES (3, 'Friday', '16:15', '20:00');
-INSERT INTO `office_hours`(`doctor_id`, `day`, `start_hour`, `end_hour`) VALUES (3, 'Monday', '16:15', '20:00');
-INSERT INTO `office_hours`(`doctor_id`, `day`, `start_hour`, `end_hour`) VALUES (3, 'Wednesday', '16:15', '20:00');
-INSERT INTO `office_hours`(`doctor_id`, `day`, `start_hour`, `end_hour`) VALUES (3, 'Tuesday', '16:15', '20:00');
-INSERT INTO `office_hours`(`doctor_id`, `day`, `start_hour`, `end_hour`) VALUES (3, 'Thurday', '16:15', '20:00');
+INSERT INTO `office_hours`(`doctor_id`, `day`, `start_hour`, `end_hour`) VALUES (1, 5, '8:15', '16:15');
+INSERT INTO `office_hours`(`doctor_id`, `day`, `start_hour`, `end_hour`) VALUES (1, 1, '8:15', '16:15');
+INSERT INTO `office_hours`(`doctor_id`, `day`, `start_hour`, `end_hour`) VALUES (1, 2, '8:15', '16:15');
+INSERT INTO `office_hours`(`doctor_id`, `day`, `start_hour`, `end_hour`) VALUES (2, 4, '8:15', '16:15');
+INSERT INTO `office_hours`(`doctor_id`, `day`, `start_hour`, `end_hour`) VALUES (2, 3, '8:15', '16:15');
+INSERT INTO `office_hours`(`doctor_id`, `day`, `start_hour`, `end_hour`) VALUES (3, 5, '16:15', '20:00');
+INSERT INTO `office_hours`(`doctor_id`, `day`, `start_hour`, `end_hour`) VALUES (3, 1, '16:15', '20:00');
+INSERT INTO `office_hours`(`doctor_id`, `day`, `start_hour`, `end_hour`) VALUES (3, 3, '16:15', '20:00');
+INSERT INTO `office_hours`(`doctor_id`, `day`, `start_hour`, `end_hour`) VALUES (3, 2, '16:15', '20:00');
+INSERT INTO `office_hours`(`doctor_id`, `day`, `start_hour`, `end_hour`) VALUES (3, 3, '16:15', '20:00');
 
 INSERT INTO `visit`(`patient_id`, `doctor_id`, `is_examination`, `patient_description`, `doctor_description`, `prescription_id`, `registration_date`, `visit_date`, `visit_made`, `cancel_cause`)
-VALUES(1,1,false,'boli mnie brzuch.',null,null,'2021-05-12','2021-05-13 8:15', null, null);
+VALUES(1,1,false,'boli mnie brzuch.','',null,'2021-05-12','2021-05-13 8:15', false, '');
 
 INSERT INTO `prescription`(`description`, `medicines`)
 VALUES('dwa razy dziennie rano i wieczorek brać 1 tabletkę', 'rutinoskorbin');
