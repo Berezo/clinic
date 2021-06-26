@@ -1,6 +1,9 @@
 package com.example.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="patient")
@@ -20,6 +23,10 @@ public class Patient {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="address_id")
     private PatientAddress address;
+
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "doctor", cascade = CascadeType.ALL)
+    private List<Visit> visits;
 
     public Patient() {
     }
@@ -60,6 +67,14 @@ public class Patient {
 
     public void setAddress(PatientAddress address) {
         this.address = address;
+    }
+
+    public List<Visit> getVisits() {
+        return visits;
+    }
+
+    public void setVisits(List<Visit> visits) {
+        this.visits = visits;
     }
 
     @Override
