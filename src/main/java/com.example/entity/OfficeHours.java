@@ -19,7 +19,7 @@ public class OfficeHours {
     private Doctor doctor;
 
     @Column(name = "day")
-    private String day;
+    private int day;
 
     @Column(name = "start_hour")
     private Time startHour;
@@ -30,7 +30,7 @@ public class OfficeHours {
     public OfficeHours() {
     }
 
-    public OfficeHours(Doctor doctor, String day, Time startHour, Time endHour) {
+    public OfficeHours(Doctor doctor, int day, Time startHour, Time endHour) {
         this.doctor = doctor;
         this.day = day;
         this.startHour = startHour;
@@ -53,11 +53,11 @@ public class OfficeHours {
         this.doctor = doctor;
     }
 
-    public String getDay() {
+    public int getDay() {
         return day;
     }
 
-    public void setDay(String day) {
+    public void setDay(int day) {
         this.day = day;
     }
 
@@ -72,6 +72,10 @@ public class OfficeHours {
     public Time getEndHour() { return endHour; }
 
     public void setEndHour(Time endHour) { this.endHour = endHour;}
+
+    public String getFullName(){
+        return day + " " + doctor.getFirst_name() + "" + doctor.getSurname();
+    }
 
 
     @Override
