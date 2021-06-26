@@ -70,38 +70,23 @@ class VisitRestController {
 //        return visit;
 //    }
 
-//    @PostMapping(value = "/visit",
-//            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
-//            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-//    public ResponseEntity<Visit> createVisit(@RequestBody VisitDetailsRequestModel requestVisitDetails){
-//        try{
-//            Visit visit = new Visit();
-//            if (requestVisitDetails.getPrescription() == null){
-//                BeanUtils.copyProperties(requestVisitDetails, visit);
-//                visitService.saveVisit(visit);
-//            } else if (requestVisitDetails.getPrescription().getDoctor() != null){
-//                visit.setPatient(requestVisitDetails.getPatient());
-//                visit.setDoctor(requestVisitDetails.getDoctor());
-//                visit.setExamination(requestVisitDetails.isExamination());
-//                visit.setPatientDescription(requestVisitDetails.getPatientDescription());
-//                visit.setDoctorDescription(requestVisitDetails.getDoctorDescription());
-//                visit.setPatientDescription(requestVisitDetails.getPatientDescription());
-//                visit.setRegistrationDate(requestVisitDetails.getRegistrationDate());
-//                visit.setVisitDate(requestVisitDetails.getVisitDate());
-//                visit.setCancelCause(requestVisitDetails.getCancelCause());
-//                visit.setPrescription(requestVisitDetails.getPrescription());
-//                System.out.println(visit.getPrescription());
-//                visitService.saveVisit(visit);
-//            }
-//            return new ResponseEntity<>(visit, HttpStatus.CREATED);
-//        }catch(HttpMessageNotReadableException e){
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }catch(PropertyValueException e){
-//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//        }catch(DataIntegrityViolationException e){
-//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//        }
-//    }
+    @PostMapping(value = "/visit",
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<Visit> createVisit(@RequestBody VisitDetailsRequestModel requestVisitDetails){
+        try{
+            Visit visit = new Visit();
+            BeanUtils.copyProperties(requestVisitDetails, visit);
+            visitService.saveVisit(visit);
+            return new ResponseEntity<>(visit, HttpStatus.CREATED);
+        }catch(HttpMessageNotReadableException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }catch(PropertyValueException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }catch(DataIntegrityViolationException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
 
 //    TODO PUT modyfikuje również encje Doctor, Patient i Perscription
 //    @PutMapping(value = "/visit/{id}",
