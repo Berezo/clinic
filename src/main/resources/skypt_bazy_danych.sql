@@ -60,7 +60,7 @@ CREATE TABLE `prescription`(
 	`id` INT AUTO_INCREMENT NOT NULL,
     `description` VARCHAR(200),
     `medicines` VARCHAR(200),
-    CONSTRAINT `prescription_pk` PRIMARY KEY(`id`),
+    CONSTRAINT `prescription_pk` PRIMARY KEY(`id`)
     );
 
 CREATE TABLE `visit`(
@@ -68,13 +68,13 @@ CREATE TABLE `visit`(
     `patient_id` INT,
     `doctor_id` INT,
     `is_examination` BOOLEAN NOT NULL,
-    `patient_description` VARCHAR(200),
-    `doctor_description` VARCHAR(200),
+    `patient_description` VARCHAR(200) default '',
+    `doctor_description` VARCHAR(200) default '',
     `prescription_id` INT,
     `registration_date` DATE NOT NULL,
     `visit_date` DATETIME NOT NULL,
-    `visit_made` BOOLEAN,
-    `cancel_cause` VARCHAR(200),
+    `visit_made` BOOLEAN  default false,
+    `cancel_cause` VARCHAR(200)  default '',
     CONSTRAINT `visit_pk` PRIMARY KEY(`id`),
     CONSTRAINT `visit_patient_fk` FOREIGN KEY(`patient_id`) REFERENCES `patient`(`id`) ON DELETE SET NULL,
     CONSTRAINT `visit_doctor_fk` FOREIGN KEY(`doctor_id`) REFERENCES `doctor`(`id`) ON DELETE SET NULL,
@@ -84,7 +84,7 @@ CREATE TABLE `visit`(
 CREATE TABLE `office_hours`(
 	`id` INT AUTO_INCREMENT NOT NULL,
     `doctor_id` INT,
-    `day` VARCHAR(20) NOT NULL,
+    `day` INT NOT NULL,
     `start_hour` TIME NOT NULL,
     `end_hour` TIME NOT NULL,
     CONSTRAINT `office_hours_pk` PRIMARY KEY(`id`),
