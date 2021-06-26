@@ -130,8 +130,8 @@ public class DoctorRestController {
 //    }
 
     @PostMapping(value="/doctor/address",
-                 consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
-                 produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<DoctorAddress> createDoctorAddress(@RequestBody DoctorAddressDetailsRequestModel requestDoctorAddressDetails) {
         try{
             DoctorAddress doctorAddress = new DoctorAddress();
@@ -158,8 +158,8 @@ public class DoctorRestController {
 //    }
 
     @PutMapping(value="/doctor/{id}",
-                consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
-                produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<Doctor> updateDoctor(@PathVariable(value = "id")int id, @RequestBody DoctorDetailsRequestModel requestDoctorDetails){
         try {
             Doctor doctor = doctorService.getDoctor(id);
@@ -212,7 +212,6 @@ public class DoctorRestController {
         }catch(IllegalArgumentException e){
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
-
     }
 
 //    @DeleteMapping(path="/doctor/address/{id}")
