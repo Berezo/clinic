@@ -36,4 +36,9 @@ public class PrescriptionDAO {
         return prescription.getId();
 
     }
+
+    public void deletePrescription(int id){
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(getPrescription(id));
+    }
 }

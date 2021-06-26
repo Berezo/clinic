@@ -25,4 +25,7 @@ public class PrescriptionService {
 
     @Transactional
     public int savePrescription(Prescription prescription){return prescriptionDAO.savePrescription( prescription);}
+
+    @Transactional
+    public void deletePrescription(int id){ prescriptionDAO.deletePrescription(id); }
 }
