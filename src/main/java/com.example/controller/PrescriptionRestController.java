@@ -1,15 +1,19 @@
 package com.example.controller;
 
+
 import com.example.entity.Doctor;
 import com.example.entity.Patient;
 import com.example.entity.Prescription;
 import com.example.model.PrescriptionDetailsRequestModel;
-import com.example.service.DoctorService;
-import com.example.service.PatientService;
 import com.example.service.PrescriptionService;
+import org.hibernate.PropertyValueException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,26 +22,40 @@ import java.util.List;
 @RequestMapping("/api")
 public class PrescriptionRestController {
     private PrescriptionService prescriptionService;
-    private Doctor doctor;
-    private Patient patient;
-    private DoctorService doctorService;
-    private PatientService patientService;
 
     @Autowired
     public void setPrescriptionService(PrescriptionService prescriptionService) {
         this.prescriptionService = prescriptionService;
     }
 
+//    @GetMapping("/prescription")
+//    public List<Prescription> getPrescriptions(){
+//        List<Prescription> prescriptions = prescriptionService.getPrescriptions();
+//        return prescriptions;
+//    }
+
     @GetMapping("/prescription")
-    public List<Prescription> getPrescriptions(){
+    public ResponseEntity<List<Prescription>> getPrescriptions(){
         List<Prescription> prescriptions = prescriptionService.getPrescriptions();
-        return prescriptions;
+        if (prescriptions.size() == 0){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(prescriptions, HttpStatus.NOT_FOUND);
     }
 
+//    @GetMapping("/prescription/{id}")
+//    public Prescription getPrescription(@PathVariable(value = "id")int id){
+//        Prescription prescription = prescriptionService.getPrescription(id);
+//        return prescription;
+//    }
+
     @GetMapping("/prescription/{id}")
-    public Prescription getPrescription(@PathVariable(value = "id")int id){
+    public ResponseEntity<Prescription> getPrescription(@PathVariable(value = "id")int id){
         Prescription prescription = prescriptionService.getPrescription(id);
-        return prescription;
+        if (prescription == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(prescription, HttpStatus.OK);
     }
 
 //    @GetMapping("/savePrescription/{patient_id}/{doctor_id}/{description}/{medicines}")
@@ -53,13 +71,76 @@ public class PrescriptionRestController {
 //        return prescriptionService.getPrescription(id);
 //    }
 
+//    @PostMapping(value="/prescription",
+//                 consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+//                 produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+//    public Prescription createPrescription(@RequestBody PrescriptionDetailsRequestModel requestPrescriptionModel){
+//        Prescription prescription = new Prescription();
+//        BeanUtils.copyProperties(requestPrescriptionModel, prescription);
+//        prescriptionService.savePrescription(prescription);
+//        return prescription;
+//    }
+
     @PostMapping(value="/prescription",
-                 consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
-                 produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public Prescription createPrescription(@RequestBody PrescriptionDetailsRequestModel requestPrescriptionModel){
-        Prescription prescription = new Prescription();
-        BeanUtils.copyProperties(requestPrescriptionModel, prescription);
-        prescriptionService.savePrescription(prescription);
-        return prescription;
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<Prescription> createPrescription(@RequestBody PrescriptionDetailsRequestModel requestPrescriptionModel){
+        try{
+            Prescription prescription = new Prescription();
+
+
+
+            BeanUtils.copyProperties(requestPrescriptionModel, prescription);
+            prescriptionService.savePrescription(prescription);
+            return new ResponseEntity<>(prescription, HttpStatus.CREATED);
+        }catch(HttpMessageNotReadableException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }catch(PropertyValueException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }catch(DataIntegrityViolationException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
+
+    @PutMapping(value="/prescription/{id}",
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<Prescription> updatePrescription(@PathVariable (value = "id")int id ,@RequestBody PrescriptionDetailsRequestModel requestPrescriptionModel){
+        try{
+            Prescription prescription = prescriptionService.getPrescription(id);
+            Doctor doctor = prescription.getDoctor();
+            Doctor doctorRequest = requestPrescriptionModel.getDoctor();
+            Patient patient = prescription.getPatient();
+            Patient patientRequest = requestPrescriptionModel.getPatient();
+
+            if (doctorRequest == null || doctorRequest.getId() == doctor.getId()){
+                requestPrescriptionModel.setDoctor(doctor);
+            }
+
+            if (patientRequest == null || patientRequest.getId() == patient.getId()){
+                requestPrescriptionModel.setPatient(patient);
+            }
+
+            BeanUtils.copyProperties(requestPrescriptionModel, prescription);
+            prescriptionService.savePrescription(prescription);
+            return new ResponseEntity<>(prescription, HttpStatus.CREATED);
+        }catch(HttpMessageNotReadableException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }catch(PropertyValueException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }catch(DataIntegrityViolationException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @DeleteMapping(value="/prescription/{id}")
+    public ResponseEntity<Prescription> deletePrescription(@PathVariable (value = "id")int id){
+        try{
+            prescriptionService.deletePrescription(id);
+            return new ResponseEntity(HttpStatus.OK);
+        }catch(IllegalArgumentException e) {
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+    }
+
 }
