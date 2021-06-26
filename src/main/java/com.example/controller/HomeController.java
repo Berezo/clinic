@@ -6,6 +6,8 @@ import com.example.entity.User;
 import com.example.service.PatientService;
 import com.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,7 +33,18 @@ public class HomeController {
 
     @GetMapping("/")
     public String index(){
-        return "index";
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println(auth.getName());
+        User user = userService.getUser(auth.getName());
+        if(user == null){
+            return "index";
+        }else{
+            if(user.getAuthorities().getAuthority().equals("ROLE_DOCTOR")){
+                return "doctor/doctor-home";
+            }else{
+                return "patient/patient-home";
+            }
+        }
     }
 
     @GetMapping(value = "/patient-register")
@@ -52,19 +65,6 @@ public class HomeController {
         return "redirect:/login";
     }
 
-    private String validatePatient(User user) {
-        if (userService.getUser(user.getUsername()) != null) {
-            return "użytkownik o takiej nazwie istnieje";
-        } else if (user.getUsername().isEmpty() || user.getPassword().isEmpty())
-        {
-            return "wypełnij wszystkie pola";
-        } else if (user.getPatient().getFirst_name().isEmpty() || user.getPatient().getSurname().isEmpty())
-        {
-            return "wypełnij wszystkie pola";
-        }
-        return "";
-    }
-
     @GetMapping("/doctor-register")
     public String registerDoctorForm(Model model){
         model.addAttribute("user", new User());
@@ -81,6 +81,19 @@ public class HomeController {
         user.setAuthorities(new Authority(user, "ROLE_DOCTOR"));
         userService.saveUser(user);
         return "redirect:/login";
+    }
+
+    private String validatePatient(User user) {
+        if (userService.getUser(user.getUsername()) != null) {
+            return "użytkownik o takiej nazwie istnieje";
+        } else if (user.getUsername().isEmpty() || user.getPassword().isEmpty())
+        {
+            return "wypełnij wszystkie pola";
+        } else if (user.getPatient().getFirst_name().isEmpty() || user.getPatient().getSurname().isEmpty())
+        {
+            return "wypełnij wszystkie pola";
+        }
+        return "";
     }
 
     private String validateDoctor(User user){
