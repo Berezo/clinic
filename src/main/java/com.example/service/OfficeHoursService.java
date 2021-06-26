@@ -27,4 +27,9 @@ public class OfficeHoursService {
     public List<OfficeHours> getOfficeHoursForDoctor(int id){
         return officeHoursDAO.getOfficeHoursForDoctor(id);
     }
+
+    @Transactional
+    public void deleteOfficeHours(int id){
+        officeHoursDAO.deleteOfficeHours(id);
+    }
 }
