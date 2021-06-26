@@ -15,12 +15,12 @@ public class Visit {
     @Id
     private int id;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade=  {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(columnDefinition="integer", name = "patient_id")
 //    @JsonIgnoreProperties({"first_name", "surname", "address"})
     private Patient patient;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade=  {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(columnDefinition="integer", name = "doctor_id")
 //    @JsonIgnoreProperties({"first_name", "surname", "is_specialist", "address"})
     private Doctor doctor;
@@ -158,7 +158,6 @@ public class Visit {
     public String toString() {
         return "Visit{" +
                 "patient=" + patient.getSurname() +
-                ", doctor=" + doctor.getSurname() +
                 ", isExamination=" + isExamination +
                 ", patientDescription='" + patientDescription + '\'' +
                 ", doctorDescription='" + doctorDescription + '\'' +
