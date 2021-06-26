@@ -24,4 +24,7 @@ public class VisitService {
 
     @Transactional
     public int updateVisit(Visit visit) {return visitDAO.updateVisit(visit); }
+
+    @Transactional
+    public void deleteVisit(int id) { visitDAO.deleteVisit(id); }
 }

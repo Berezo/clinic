@@ -40,5 +40,8 @@ public class VisitDAO {
         return visit.getId();
     }
 
-
+    public void deleteVisit(int id){
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(getVisit(id));
+    }
 }
