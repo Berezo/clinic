@@ -17,6 +17,8 @@ DROP TABLE IF EXISTS doctor;
 DROP TABLE IF EXISTS doctor_address;
 
 
+
+
 CREATE TABLE `patient_address`(
 	`id` INT AUTO_INCREMENT NOT NULL,
     `house_number` VARCHAR(10),
