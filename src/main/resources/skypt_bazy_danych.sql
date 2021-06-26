@@ -6,6 +6,8 @@
 
 USE clinic;
 
+DROP TABLE IF EXISTS authorities;
+DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS visit;
 DROP TABLE IF EXISTS prescription;
 DROP TABLE IF EXISTS patient;
@@ -92,7 +94,7 @@ CREATE TABLE `office_hours`(
     );
 
 CREATE TABLE `users`(
-	`username` VARCHAR(25) NOT NULL,
+	`username` VARCHAR(25) NOT NULL DEFAULT '',
     `password` VARCHAR(60) NOT NULL,
     `enabled` BOOLEAN NOT NULL DEFAULT TRUE,
     `patient_id` INT,
@@ -104,11 +106,10 @@ CREATE TABLE `users`(
 
 CREATE TABLE `authorities` (
 	`id` INT AUTO_INCREMENT NOT NULL,
-	`username` varchar(50) NOT NULL,
+	`username` varchar(50) NOT NULL DEFAULT '',
 	`authority` varchar(50) NOT NULL,
 	CONSTRAINT `authorities_pk` PRIMARY KEY(`id`),
-	foreign key (`username`)
-	REFERENCES `users` (`username`)
+	foreign key (`username`) REFERENCES `users` (`username`)
 );
 
 
