@@ -2,6 +2,8 @@ package com.example.controller;
 
 
 import com.example.entity.Authority;
+import com.example.entity.Doctor;
+import com.example.entity.Patient;
 import com.example.entity.User;
 import com.example.service.PatientService;
 import com.example.service.UserService;
@@ -39,11 +41,14 @@ public class HomeController {
         if(user == null){
             return "index";
         }else{
-            if(user.getAuthorities().getAuthority().equals("ROLE_DOCTOR")){
+            if(user.getAuthorities().getAuthority().equals("ROLE_ADMIN")){
+                return "admin/secret-admin-page";
+            }else if(user.getAuthorities().getAuthority().equals("ROLE_DOCTOR")){
                 return "doctor/doctor-home";
-            }else{
+            }else if(user.getAuthorities().getAuthority().equals("ROLE_PATIENT")){
                 return "patient/patient-home";
             }
+            return "index";
         }
     }
 
@@ -62,7 +67,27 @@ public class HomeController {
         }
         user.setAuthorities(new Authority(user, "ROLE_PATIENT"));
         userService.saveUser(user);
-        return "redirect:/login";
+        return "redirect:";
+    }
+
+    @GetMapping("/profile")
+    public String getProfileInfo(Model model){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println(auth.getName());
+        User user = userService.getUser(auth.getName());
+
+        if(user.getAuthorities().getAuthority().equals("ROLE_ADMIN")){
+            return "index";
+        }else if(user.getAuthorities().getAuthority().equals("ROLE_DOCTOR")){
+            Doctor doctor = user.getDoctor();
+            model.addAttribute("doctor", doctor);
+            return "doctor/doctor-profile";
+        }else if(user.getAuthorities().getAuthority().equals("ROLE_PATIENT")){
+            Patient patient = user.getPatient();
+            model.addAttribute("patient",patient);
+            return "patient/patient-profile";
+        }
+        return "index";
     }
 
     @GetMapping("/doctor-register")
@@ -80,7 +105,7 @@ public class HomeController {
         }
         user.setAuthorities(new Authority(user, "ROLE_DOCTOR"));
         userService.saveUser(user);
-        return "redirect:/login";
+        return "redirect:";
     }
 
     private String validatePatient(User user) {
