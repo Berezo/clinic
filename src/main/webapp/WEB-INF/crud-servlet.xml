@@ -60,22 +60,24 @@
     <mvc:view-controller path="/login"/>
     <mvc:view-controller path="/logout"/>
     <mvc:view-controller path="/register"/>
-        <bean id="bcrypt" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
-    <!--&lt;!&ndash;    <mvc:resources location="/resources" mapping="/resources/**"/>&ndash;&gt;-->
-        <sec:http>
-            <sec:intercept-url pattern="/" access="permitAll()"/>
-            <sec:intercept-url pattern="/register" access="permitAll()"/>
-            <sec:intercept-url pattern="/login" access="isAnonymous()"/>
-           <sec:intercept-url pattern="/logout" access="isAuthenticated()"/>
-           <sec:intercept-url pattern="/error" access="permitAll()"/>
-           <sec:intercept-url pattern="/**" access="permitAll()"/>
-            <sec:form-login login-page="/login"/>
-            <sec:logout logout-success-url="/"/>
-       </sec:http>
-       <sec:authentication-manager>
-            <sec:authentication-provider>
-                <sec:password-encoder ref="bcrypt"/>
-                <sec:jdbc-user-service data-source-ref="myDataSource"/>
-            </sec:authentication-provider>
-        </sec:authentication-manager>
+    <bean id="bcrypt" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+    <!--    <mvc:resources location="/resources" mapping="/resources/**"/>-->
+    <sec:http>
+        <sec:intercept-url pattern="/" access="permitAll()"/>
+        <sec:intercept-url pattern="/register" access="permitAll()"/>
+        <sec:intercept-url pattern="/login" access="isAnonymous()"/>
+        <sec:intercept-url pattern="/logout" access="isAuthenticated()"/>
+        <sec:intercept-url pattern="/office-hours" access="isAuthenticated()"/>
+        <!--        <sec:intercept-url method="POST" pattern="/api/**" access="permitAll()"/>-->
+        <!--        <sec:intercept-url method="PUT" pattern="/api/**" access="permitAll()"/>-->
+        <sec:form-login login-page="/login"/>
+        <sec:logout logout-success-url="/"/>
+        <sec:csrf disabled="true"/>
+    </sec:http>
+    <sec:authentication-manager>
+        <sec:authentication-provider>
+            <sec:password-encoder ref="bcrypt"/>
+            <sec:jdbc-user-service data-source-ref="myDataSource"/>
+        </sec:authentication-provider>
+    </sec:authentication-manager>
 </beans>
