@@ -5,7 +5,7 @@ import java.sql.Time;
 
 public class OfficeHoursDetailsRequestModel {
     private Doctor doctor;
-    private String day;
+    private int day;
     private Time startHour;
     private Time endHour;
 
@@ -17,11 +17,9 @@ public class OfficeHoursDetailsRequestModel {
         this.doctor = doctor;
     }
 
-    public String getDay() {
-        return day;
-    }
+    public int getDay() { return day; }
 
-    public void setDay(String day) {
+    public void setDay(int day) {
         this.day = day;
     }
 

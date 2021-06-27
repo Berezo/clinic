@@ -73,11 +73,6 @@ public class OfficeHours {
 
     public void setEndHour(Time endHour) { this.endHour = endHour;}
 
-    public String getFullName(){
-        return day + " " + doctor.getFirst_name() + "" + doctor.getSurname();
-    }
-
-
     @Override
     public String toString() {
         return "OfficeHours{" +

@@ -22,10 +22,16 @@ import java.util.List;
 @RequestMapping("/api")
 public class OfficeHoursRestController {
     private OfficeHoursService officeHoursService;
+    private DoctorService doctorService;
 
     @Autowired
     public void setOfficeHoursService(OfficeHoursService officeHoursService) {
         this.officeHoursService = officeHoursService;
+    }
+
+    @Autowired
+    public void setDoctorService(DoctorService doctorService) {
+        this.doctorService = doctorService;
     }
 
     //    @GetMapping("/office-hours")
@@ -74,6 +80,13 @@ public class OfficeHoursRestController {
     public ResponseEntity<OfficeHours> createOfficeHours(@RequestBody OfficeHoursDetailsRequestModel requestOfficeHoursModel){
         try{
             OfficeHours officeHours = new OfficeHours();
+            Doctor doctorRequest  = requestOfficeHoursModel.getDoctor();
+            Doctor doctor = doctorService.getDoctor(doctorRequest.getId());
+
+            if (doctor != null){
+                requestOfficeHoursModel.setDoctor(doctor);
+            }
+
             BeanUtils.copyProperties(requestOfficeHoursModel, officeHours);
             officeHoursService.saveOfficeHours(officeHours);
             return new ResponseEntity<>(officeHours, HttpStatus.CREATED);
