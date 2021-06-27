@@ -31,6 +31,10 @@ public class Patient {
     public Patient() {
     }
 
+    public Patient(String id){
+        this.id = Integer.parseInt(id);
+    }
+
     public Patient(String first_name, String surname, PatientAddress address) {
         this.first_name = first_name;
         this.surname = surname;

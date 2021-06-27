@@ -109,6 +109,28 @@ public class VisitController {
         return "redirect:/visits";
     }
 
+    @GetMapping("/cancel-visit")
+    public String cancelVisit(@RequestParam("visitId") int visitId, Model model){
+        Visit visit = visitService.getVisit(visitId);
+        model.addAttribute("visit",visit);
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.getUser(auth.getName());
+
+        if(user.getAuthorities().getAuthority().equals("ROLE_DOCTOR")){
+            return "doctor/doctor-home";
+        }else if(user.getAuthorities().getAuthority().equals("ROLE_PATIENT")){
+            return "patient/patient-visit-cancel";
+        }
+        return "redirect:/logout";
+    }
+
+    @PostMapping("/cancel-visit")
+    public String cancelVisitSave(@ModelAttribute("visit") Visit visit){
+        visitService.saveVisit(visit);
+        return "redirect:/visits";
+    }
+
     private List<Timestamp> checkTimes(){
         Timestamp startDate = new Timestamp(System.currentTimeMillis());
         startDate.setHours(8);

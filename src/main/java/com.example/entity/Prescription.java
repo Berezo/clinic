@@ -22,6 +22,10 @@ public class Prescription {
     public Prescription() {
     }
 
+    public Prescription(String id){
+        this.id = Integer.parseInt(id);
+    }
+
     public Prescription(String description, String medicines) {
         this.description = description;
         this.medicines = medicines;
