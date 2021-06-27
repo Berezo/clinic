@@ -6,6 +6,7 @@
     <title>Home</title>
 </head>
 <body>
+    <li><a href="${contextPath}/profile/">My Profile</a></li>
     <li><a href="${contextPath}/visits/">My Visits</a></li>
     <li><a href="${contextPath}/office-hours/">Office Hours</a></li>
     <li><a href="${contextPath}/doctor/">Make an appointment</a></li>

@@ -3,9 +3,10 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
-    <title>Home</title>
+    <title>TOP SECRET</title>
 </head>
 <body>
-    <li><a href="${contextPath}/login">Login</a></li>
+    <li><a href="${contextPath}/patient-register">Register Patient</a></li>
+    <li><a href="${contextPath}/doctor-register">Register Doctor</a></li>
 </body>
 </html>
