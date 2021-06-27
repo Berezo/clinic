@@ -6,10 +6,8 @@
     <title>Home</title>
 </head>
 <body>
+    <li><a href="${contextPath}/visits/">My Visits</a></li>
     <li><a href="${contextPath}/office-hours/">Office Hours</a></li>
-    <li><a href="${contextPath}/visits/">Visits</a></li>
-    <li><a href="${contextPath}/patient-register">Register Patient</a></li>
-    <li><a href="${contextPath}/doctor-register">Register Doctor</a></li>
-    <li><a href="${contextPath}/login">Login</a></li>
+    <li><a href="${contextPath}/doctor/">Make an appointment</a></li>
 </body>
 </html>

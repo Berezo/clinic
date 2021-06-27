@@ -7,6 +7,10 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 @Repository
@@ -20,6 +24,22 @@ public class VisitDAO {
         Session session = sessionFactory.getCurrentSession();
         String queryString = "SELECT v FROM Visit v";
         Query<Visit> query = session.createQuery(queryString, Visit.class);
+        return query.getResultList();
+    }
+
+    public List<Visit> getVisitsForDoctor(int id){
+        Session session = sessionFactory.getCurrentSession();
+        String queryString = "SELECT v FROM Visit v WHERE v.doctor.id = :id";
+        Query<Visit> query = session.createQuery(queryString, Visit.class);
+        query.setParameter("id", id);
+        return query.getResultList();
+    }
+
+    public List<Visit> getVisitsForPatient(int id){
+        Session session = sessionFactory.getCurrentSession();
+        String queryString = "SELECT v FROM Visit v WHERE v.patient.id = :id";
+        Query<Visit> query = session.createQuery(queryString, Visit.class);
+        query.setParameter("id", id);
         return query.getResultList();
     }
 
@@ -43,5 +63,16 @@ public class VisitDAO {
     public void deleteVisit(int id){
         Session session = sessionFactory.getCurrentSession();
         session.delete(getVisit(id));
+    }
+
+    public boolean compareTime(Timestamp timestamp){
+        Session session = sessionFactory.getCurrentSession();
+        String queryString = "SELECT v FROM Visit v WHERE v.visitDate = :timestamp";
+        Query<Visit> query = session.createQuery(queryString, Visit.class);
+        query.setParameter("timestamp", timestamp);
+        if(query.uniqueResult() == null){
+            return false;
+        }
+        return true;
     }
 }

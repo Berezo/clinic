@@ -7,6 +7,8 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.List;
 
 @Repository
@@ -46,5 +48,34 @@ public class OfficeHoursDAO {
     public void deleteOfficeHours(int id){
         Session session = sessionFactory.getCurrentSession();
         session.delete(getOfficeHour(id));
+    }
+
+    public boolean compareTime(Timestamp timestamp, int doctorId){
+        Session session = sessionFactory.getCurrentSession();
+        String queryString = "SELECT o FROM OfficeHours o WHERE o.doctor.id = :id";
+        Query<OfficeHours> query = session.createQuery(queryString, OfficeHours.class);
+        query.setParameter("id", doctorId);
+        List<OfficeHours> officeHours = query.getResultList();
+
+        Calendar timestampCalendar = Calendar.getInstance();
+        Calendar startHour = Calendar.getInstance();
+        Calendar endHour = Calendar.getInstance();
+
+        timestampCalendar.setTime(timestamp);
+        int time = timestampCalendar.get(Calendar.HOUR_OF_DAY)*60 + timestampCalendar.get(Calendar.MINUTE);
+
+        for(OfficeHours officeHour: officeHours){
+            timestampCalendar.setTime(timestamp);
+            if(officeHour.getDay() == timestampCalendar.get(Calendar.DAY_OF_WEEK)){
+                startHour.setTime(officeHour.getStartHour());
+                endHour.setTime(officeHour.getEndHour());
+                int start = startHour.get(Calendar.HOUR_OF_DAY)*60 + startHour.get(Calendar.MINUTE);
+                int end = endHour.get(Calendar.HOUR_OF_DAY)*60 + endHour.get(Calendar.MINUTE);
+                if(time >= start && time <= end) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }

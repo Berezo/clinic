@@ -1,8 +1,10 @@
 package com.example.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="doctor")
@@ -26,7 +28,15 @@ public class Doctor {
     @JoinColumn(name="address_id")
     private DoctorAddress address;
 
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "doctor", cascade = CascadeType.ALL)
+    private List<Visit> visits;
+
     public Doctor() {
+    }
+
+    public Doctor(String id){
+        this.id = Integer.parseInt(id);
     }
 
     public Doctor(String first_name, String surname, DoctorAddress address) {
@@ -73,6 +83,14 @@ public class Doctor {
 
     public void setAddress(DoctorAddress address) {
         this.address = address;
+    }
+
+    public List<Visit> getVisits() {
+        return visits;
+    }
+
+    public void setVisits(List<Visit> visits) {
+        this.visits = visits;
     }
 
     @Override
