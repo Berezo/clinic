@@ -40,7 +40,7 @@ INSERT INTO `visit`(`patient_id`, `doctor_id`, `is_examination`, `patient_descri
 VALUES(2,2,false,'Nic nie wiedzę.','Pacient nie widział, ale już widzi.',1,'2021-05-21','2021-05-22 8:15', true, null);
 
 INSERT INTO `visit`(`patient_id`, `doctor_id`, `is_examination`, `patient_description`, `doctor_description`, `prescription_id`, `registration_date`, `visit_date`, `visit_made`, `cancel_cause`)
-VALUES(3,3,false,'Mam katar',null,null,'2021-05-21','2021-05-22 16:30', false, 'Przestałem mieć katar');
+VALUES(3,3,false,'Mam katar',null,null,'2021-05-21','2021-05-22 16:30', true, 'Przestałem mieć katar');
 
 INSERT INTO `users` (`username`,`password`,`enabled`) VALUES ('admin', '$2a$10$IW0jBlYMEdHivodxyANe0OGama9pyhGyEwFHRSrWeONVdBkVOHX8e', TRUE); -- haslo: admin
 INSERT INTO `users` (`username`,`password`,`enabled`,`doctor_id`) VALUES ('doctor', '$2a$10$V0pN8/JA..J3xBcss/goYeLK8Bf2F0KzgXbQAtaqMQommzVwKBlwi', TRUE,1); -- haslo: doctor
