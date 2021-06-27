@@ -40,11 +40,11 @@
                 <td>${visit.registrationDate}</td>
                 <td>${visit.visitDate}</td>
                 <c:choose>
-                    <c:when test="${visit.cancelCause == null || visit.visitMade == false}">
-                        <td><a href="${cancel}">Odwołaj</a></td>
+                    <c:when test="${visit.cancelCause != null || visit.visitMade == true}">
+                        <td>${visit.cancelCause}</td>
                     </c:when>
                     <c:otherwise>
-                        <td>${visit.cancelCause}</td>
+                        <td><a href="${cancel}">Odwołaj</a></td>
                     </c:otherwise>
                 </c:choose>
             </tr>

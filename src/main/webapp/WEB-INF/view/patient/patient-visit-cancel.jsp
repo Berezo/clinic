@@ -35,6 +35,8 @@
         <form:hidden path="patientDescription" id="patientDescription" value="${visit.patientDescription}"/>
         <c:if test="${visit.prescription.id != null}">
             <form:hidden path="prescription" id="prescription" value="${visit.prescription.id}"/>
+            <form:hidden path="prescription.description" id="pre_desc" value="${visit.prescription.description}"/>
+            <form:hidden path="prescription.medicines" id="pre_meds" value="${visit.prescription.medicines}"/>
         </c:if>
         <form:hidden path="registrationDate" id="registrationDade" value="${visit.registrationDate}"/>
         <form:hidden path="visitDate" id="visitDate" value="${visit.visitDate}"/>

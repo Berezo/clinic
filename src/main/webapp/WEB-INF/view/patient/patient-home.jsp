@@ -10,5 +10,6 @@
     <li><a href="${contextPath}/visits/">My Visits</a></li>
     <li><a href="${contextPath}/office-hours/">Office Hours</a></li>
     <li><a href="${contextPath}/doctor/">Make an appointment</a></li>
+    <li><a href="${contextPath}/logout">Logout</a></li>
 </body>
 </html>
