@@ -1,8 +1,5 @@
 package com.example.controller;
 
-
-import com.example.entity.Doctor;
-import com.example.entity.Patient;
 import com.example.entity.Prescription;
 import com.example.model.PrescriptionDetailsRequestModel;
 import com.example.service.PrescriptionService;
