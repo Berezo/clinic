@@ -2,6 +2,7 @@
 
 Aby uruchomić projekt należy skorzystać z polecenia: gradlew apprun
 W projekcie znajdują się trzy przykładowe konta:
+
 Konto nr 1:
 login: pacient
 hasło: pacient
