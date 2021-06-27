@@ -54,6 +54,10 @@ public class Visit {
     public Visit() {
     }
 
+    public Visit(String id){
+        this.id = Integer.parseInt(id);
+    }
+
     public Visit(Patient patient, Doctor doctor, boolean isExamination, String patientDescription, String doctorDescription, Prescription prescription, Date registrationDate, Timestamp visitDate, String cancelCause) {
         this.patient = patient;
         this.doctor = doctor;
