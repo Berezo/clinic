@@ -161,7 +161,6 @@ public class Visit {
     @Override
     public String toString() {
         return "Visit{" +
-                "patient=" + patient.getSurname() +
                 ", isExamination=" + isExamination +
                 ", patientDescription='" + patientDescription + '\'' +
                 ", doctorDescription='" + doctorDescription + '\'' +
