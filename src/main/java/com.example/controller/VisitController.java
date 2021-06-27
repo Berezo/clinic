@@ -2,7 +2,6 @@ package com.example.controller;
 
 import com.example.entity.*;
 import com.example.service.*;
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,8 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.print.Doc;
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -60,14 +57,19 @@ public class VisitController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.getUser(auth.getName());
         List<Visit> visits;
+        visits = visitService.getVisits();
+
         if(user.getPatient() != null){
             visits = visitService.getVisitsForPatient(user.getPatient().getId());
-        }else{
+            model.addAttribute("visits", visits);
+            return "patient/patient-visit-list";
+        }else if(user.getDoctor() != null){
             visits = visitService.getVisitsForDoctor(user.getDoctor().getId());
+            model.addAttribute("visits", visits);
+            return "doctor/doctor-visit-list";
         }
-        System.out.println(visits);
         model.addAttribute("visits", visits);
-        return "patient/patient-visit-list";
+        return "admin/visits-list";
     }
 
     @GetMapping("/doctor/")
@@ -118,7 +120,7 @@ public class VisitController {
         User user = userService.getUser(auth.getName());
 
         if(user.getAuthorities().getAuthority().equals("ROLE_DOCTOR")){
-            return "doctor/doctor-home";
+            return "patient/patient-visit-cancel";
         }else if(user.getAuthorities().getAuthority().equals("ROLE_PATIENT")){
             return "patient/patient-visit-cancel";
         }
@@ -127,6 +129,19 @@ public class VisitController {
 
     @PostMapping("/cancel-visit")
     public String cancelVisitSave(@ModelAttribute("visit") Visit visit){
+        visitService.saveVisit(visit);
+        return "redirect:/visits";
+    }
+
+    @GetMapping("/add-description")
+    public String addDescription(@RequestParam("visitId") int visitId, Model model){
+        Visit visit = visitService.getVisit(visitId);
+        model.addAttribute("visit",visit);
+        return "doctor/doctor-add-description";
+    }
+
+    @PostMapping("/add-description")
+    public String addDescriptionSave(@ModelAttribute("visit") Visit visit){
         visitService.saveVisit(visit);
         return "redirect:/visits";
     }
