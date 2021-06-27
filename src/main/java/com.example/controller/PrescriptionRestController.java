@@ -1,8 +1,5 @@
 package com.example.controller;
 
-
-import com.example.entity.Doctor;
-import com.example.entity.Patient;
 import com.example.entity.Prescription;
 import com.example.model.PrescriptionDetailsRequestModel;
 import com.example.service.PrescriptionService;
@@ -87,9 +84,6 @@ public class PrescriptionRestController {
     public ResponseEntity<Prescription> createPrescription(@RequestBody PrescriptionDetailsRequestModel requestPrescriptionModel){
         try{
             Prescription prescription = new Prescription();
-
-
-
             BeanUtils.copyProperties(requestPrescriptionModel, prescription);
             prescriptionService.savePrescription(prescription);
             return new ResponseEntity<>(prescription, HttpStatus.CREATED);
@@ -108,18 +102,6 @@ public class PrescriptionRestController {
     public ResponseEntity<Prescription> updatePrescription(@PathVariable (value = "id")int id ,@RequestBody PrescriptionDetailsRequestModel requestPrescriptionModel){
         try{
             Prescription prescription = prescriptionService.getPrescription(id);
-            Doctor doctor = prescription.getDoctor();
-            Doctor doctorRequest = requestPrescriptionModel.getDoctor();
-            Patient patient = prescription.getPatient();
-            Patient patientRequest = requestPrescriptionModel.getPatient();
-
-            if (doctorRequest == null || doctorRequest.getId() == doctor.getId()){
-                requestPrescriptionModel.setDoctor(doctor);
-            }
-
-            if (patientRequest == null || patientRequest.getId() == patient.getId()){
-                requestPrescriptionModel.setPatient(patient);
-            }
 
             BeanUtils.copyProperties(requestPrescriptionModel, prescription);
             prescriptionService.savePrescription(prescription);

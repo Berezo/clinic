@@ -68,8 +68,11 @@
         <sec:intercept-url pattern="/login" access="isAnonymous()"/>
         <sec:intercept-url pattern="/logout" access="isAuthenticated()"/>
         <sec:intercept-url pattern="/office-hours" access="isAuthenticated()"/>
+<!--        <sec:intercept-url method="POST" pattern="/api/**" access="permitAll()"/>-->
+<!--        <sec:intercept-url method="PUT" pattern="/api/**" access="permitAll()"/>-->
         <sec:form-login login-page="/login"/>
         <sec:logout logout-success-url="/"/>
+        <sec:csrf disabled="true"/>
     </sec:http>
     <sec:authentication-manager>
         <sec:authentication-provider>
@@ -77,4 +80,5 @@
             <sec:jdbc-user-service data-source-ref="myDataSource"/>
         </sec:authentication-provider>
     </sec:authentication-manager>
+
 </beans>
