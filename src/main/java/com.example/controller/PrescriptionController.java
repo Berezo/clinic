@@ -12,6 +12,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -36,7 +38,7 @@ public class PrescriptionController {
     }
 
     @GetMapping("/prescription")
-    public String cancelVisit(@RequestParam("prescriptionId") int prescriptionId, Model model){
+    public String getPrescription(@RequestParam("prescriptionId") int prescriptionId, Model model){
         Prescription prescription = prescriptionService.getPrescription(prescriptionId);
         model.addAttribute("prescription", prescription);
 
@@ -44,10 +46,32 @@ public class PrescriptionController {
         User user = userService.getUser(auth.getName());
 
         if(user.getAuthorities().getAuthority().equals("ROLE_DOCTOR")){
-            return "doctor/doctor-home";
+            return "doctor/doctor-edit-prescription";
         }else if(user.getAuthorities().getAuthority().equals("ROLE_PATIENT")){
             return "patient/patient-prescription";
         }
         return "redirect:/logout";
+    }
+
+    @PostMapping("/prescription")
+    public String editPrescription(@ModelAttribute("prescription") Prescription prescription, Model model){
+        prescriptionService.savePrescription(prescription);
+        return "redirect:/visits";
+    }
+
+    @GetMapping("/make-prescription")
+    public String makePrescription(@RequestParam("visitId") int visitId, Model model){
+        Prescription prescription = new Prescription();
+        Visit visit = visitService.getVisit(visitId);
+        model.addAttribute("prescription", prescription);
+        model.addAttribute("visit", visit);
+        System.out.println(visit);
+        return "doctor/doctor-add-prescription";
+    }
+
+    @PostMapping("/make-prescription")
+    public String savePrescription(@ModelAttribute("visit") Visit visit, Model model){
+        visitService.saveVisit(visit);
+        return "redirect:/visits";
     }
 }
