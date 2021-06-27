@@ -47,8 +47,6 @@ INSERT INTO `users` (`username`,`password`,`enabled`,`doctor_id`) VALUES ('docto
 INSERT INTO `users` (`username`,`password`,`enabled`,`patient_id`) VALUES ('patient', '$2a$10$Psx.sMBsZ2VZyEU.AaHapeummvXNlsn.FObhWOVk73uY9KVBubaZa', TRUE,1); -- haslo: patient
 
 INSERT INTO `authorities` (`username`,`authority`) values ('admin','ROLE_ADMIN');
-INSERT INTO `authorities` (`username`,`authority`) values ('admin','ROLE_DOCTOR');
-INSERT INTO `authorities` (`username`,`authority`) values ('admin','ROLE_PATIENT');
 INSERT INTO `authorities` (`username`,`authority`) values ('doctor','ROLE_DOCTOR');
 INSERT INTO `authorities` (`username`,`authority`) values ('patient','ROLE_PATIENT');
 
