@@ -1,0 +1,3700 @@
+{
+	"info": {
+		"_postman_id": "dcac450a-b49e-4196-9b52-5b31ac5e0bcc",
+		"name": "Clinic",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "doctor",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "Replaces the Doctor resource.",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"first_name\": \"Grzegorz\",\n    \"surname\": \"Smolarek\",\n    \"is_specialist\": true,\n    \"address\": {\n        \"id\": 2,\n        \"house_number\": \"5\",\n        \"street\": \"Marii Skłodowskiej-Curie\",\n        \"city\": \"Gdańsk\",\n        \"zip_code\": \"80-001\"\n    }\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/doctor/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"doctor",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "2",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Doctor resource updated",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"first_name\": \"Grzegorz\",\n    \"surname\": \"Smolarek\",\n    \"is_specialist\": true,\n    \"address\": {\n        \"id\": 2,\n        \"house_number\": \"5\",\n        \"street\": \"Marii Skłodowskiej-Curie\",\n        \"city\": \"Gdańsk\",\n        \"zip_code\": \"80-001\"\n    }\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/doctor/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"doctor",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"first_name\": \"Grzegorz\",\n \"surname\": \"Smolarek\",\n \"is_specialist\": true,\n \"address\": {\n  \"id\": 2,\n  \"house_number\": \"5\",\n  \"street\": \"Marii Skłodowskiej-Curie\",\n  \"city\": \"Gdańsk\",\n  \"zip_code\": \"80-001\"\n }\n}"
+										},
+										{
+											"name": "Invalid input",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"first_name\": \"Grzegorz\",\n    \"surname\": \"Smolarek\",\n    \"is_specialist\": true,\n    \"address\": {\n        \"id\": 2,\n        \"house_number\": \"5\",\n        \"street\": \"Marii Skłodowskiej-Curie\",\n        \"city\": \"Gdańsk\",\n        \"zip_code\": \"80-001\"\n    }\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/doctor/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"doctor",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Resource not found",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"first_name\": \"Grzegorz\",\n    \"surname\": \"Smolarek\",\n    \"is_specialist\": true,\n    \"address\": {\n        \"id\": 2,\n        \"house_number\": \"5\",\n        \"street\": \"Marii Skłodowskiej-Curie\",\n        \"city\": \"Gdańsk\",\n        \"zip_code\": \"80-001\"\n    }\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/doctor/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"doctor",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Retrieves a DoctorOutput resource.",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/doctor/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"doctor",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "DoctorOutput resource response",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/doctor/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"doctor",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"id\": 1,\n \"first_name\": \"Patch\",\n \"surname\": \"Adams\",\n \"is_specialist\": false,\n \"address\": {\n  \"id\": 1,\n  \"house_number\": \"10/1\",\n  \"street\": \"Gołuńska\",\n  \"city\": \"Bydgoszcz\",\n  \"zip_code\": \"26-327\"\n }\n}"
+										},
+										{
+											"name": "Resource not found",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/doctor/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"doctor",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Removes the Doctor resource.",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/doctor/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"doctor",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Doctor resource deleted",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/doctor/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"doctor",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "No Content",
+											"code": 204,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Resource not found",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/doctor/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"doctor",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "address",
+							"item": [
+								{
+									"name": "{id}",
+									"item": [
+										{
+											"name": "Replaces the DoctorAddress resource.",
+											"request": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"house_number\": \"12\",\n    \"street\": \"Wspólna\",\n    \"city\": \"Warszawa\",\n    \"zip_code\": \"00-722\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/doctor/address/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"doctor",
+														"address",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "2",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "DoctorAddress resource updated",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"house_number\": \"12\",\n    \"street\": \"Wspólna\",\n    \"city\": \"Warszawa\",\n    \"zip_code\": \"00-722\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/doctor/address/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"doctor",
+																"address",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"house_number\": \"12\",\n \"street\": \"Wspólna\",\n \"city\": \"Warszawa\",\n \"zip_code\": \"00-722\"\n}"
+												},
+												{
+													"name": "Invalid input",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"house_number\": \"12\",\n    \"street\": \"Wspólna\",\n    \"city\": \"Warszawa\",\n    \"zip_code\": \"00-722\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/doctor/address/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"doctor",
+																"address",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "text",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "text/plain"
+														}
+													],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "Resource not found",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"house_number\": \"12\",\n    \"street\": \"Wspólna\",\n    \"city\": \"Warszawa\",\n    \"zip_code\": \"00-722\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/doctor/address/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"doctor",
+																"address",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "text",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "text/plain"
+														}
+													],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										},
+										{
+											"name": "Retrieves a DoctorAddressOutput resource.",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/doctor/address/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"doctor",
+														"address",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "DoctorAddressOutput resource response",
+													"originalRequest": {
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/doctor/address/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"doctor",
+																"address",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"id\": 1,\n \"house_number\": \"10/1\",\n \"street\": \"Gołuńska\",\n \"city\": \"Bydgoszcz\",\n \"zip_code\": \"26-327\"\n}"
+												},
+												{
+													"name": "Resource not found",
+													"originalRequest": {
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/doctor/address/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"doctor",
+																"address",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "text",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "text/plain"
+														}
+													],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										},
+										{
+											"name": "Removes the DoctorAddress resource.",
+											"request": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/doctor/address/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"doctor",
+														"address",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "DoctorAddress resource deleted",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/doctor/address/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"doctor",
+																"address",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "No Content",
+													"code": 204,
+													"_postman_previewlanguage": "text",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "text/plain"
+														}
+													],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "Resource not found",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/doctor/address/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"doctor",
+																"address",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "text",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "text/plain"
+														}
+													],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "Creates a DoctorAddressCreate resource.",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"house_number\": \"12\",\n    \"street\": \"Głowna\",\n    \"city\": \"Radom\",\n    \"zip_code\": \"26-601\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/doctor/address",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"doctor",
+												"address"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "DoctorAddressCreate resource created",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"house_number\": \"12\",\n    \"street\": \"Głowna\",\n    \"city\": \"Radom\",\n    \"zip_code\": \"26-601\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/doctor/address",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"doctor",
+														"address"
+													]
+												}
+											},
+											"status": "Created",
+											"code": 201,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"house_number\": \"12\",\n \"street\": \"Głowna\",\n \"city\": \"Radom\",\n \"zip_code\": \"26-601\"\n}"
+										},
+										{
+											"name": "Invalid input",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"house_number\": \"12\",\n    \"street\": \"Głowna\",\n    \"city\": \"Radom\",\n    \"zip_code\": \"26-601\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/doctor/address",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"doctor",
+														"address"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Resource not found",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"house_number\": \"12\",\n    \"street\": \"Głowna\",\n    \"city\": \"Radom\",\n    \"zip_code\": \"26-601\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/doctor/address",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"doctor",
+														"address"
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Retrieves the collection of DoctorAddressOutput resources.",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/doctor/address",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"doctor",
+												"address"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "DoctorAddressOutput collection response",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/doctor/address",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"doctor",
+														"address"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "[\n {\n  \"id\": 1,\n  \"house_number\": \"10/1\",\n  \"street\": \"Gołuńska\",\n  \"city\": \"Bydgoszcz\",\n  \"zip_code\": \"26-327\"\n },\n {\n  \"id\": 1,\n  \"house_number\": \"10/1\",\n  \"street\": \"Gołuńska\",\n  \"city\": \"Bydgoszcz\",\n  \"zip_code\": \"26-327\"\n }\n]"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Creates a DoctorCreate resource.",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"Jakub\",\n    \"surname\": \"Górski\",\n    \"is_specialist\": true,\n    \"address\": {\n        \"id\": 2,\n        \"house_number\": \"5\",\n        \"street\": \"Marii Skłodowskiej-Curie\",\n        \"city\": \"Gdańsk\",\n        \"zip_code\": \"80-001\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/doctor",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctor"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "DoctorCreate resource created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"first_name\": \"Jakub\",\n    \"surname\": \"Górski\",\n    \"is_specialist\": true,\n    \"address\": {\n        \"id\": 2,\n        \"house_number\": \"5\",\n        \"street\": \"Marii Skłodowskiej-Curie\",\n        \"city\": \"Gdańsk\",\n        \"zip_code\": \"80-001\"\n    }\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/doctor",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"doctor"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"first_name\": \"Jakub\",\n \"surname\": \"Górski\",\n \"is_specialist\": true,\n \"address\": {\n  \"id\": 2,\n  \"house_number\": \"5\",\n  \"street\": \"Marii Skłodowskiej-Curie\",\n  \"city\": \"Gdańsk\",\n  \"zip_code\": \"80-001\"\n }\n}"
+								},
+								{
+									"name": "Invalid input",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"first_name\": \"Jakub\",\n    \"surname\": \"Górski\",\n    \"is_specialist\": true,\n    \"address\": {\n        \"id\": 2,\n        \"house_number\": \"5\",\n        \"street\": \"Marii Skłodowskiej-Curie\",\n        \"city\": \"Gdańsk\",\n        \"zip_code\": \"80-001\"\n    }\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/doctor",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"doctor"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Resource not found",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"first_name\": \"Jakub\",\n    \"surname\": \"Górski\",\n    \"is_specialist\": true,\n    \"address\": {\n        \"id\": 2,\n        \"house_number\": \"5\",\n        \"street\": \"Marii Skłodowskiej-Curie\",\n        \"city\": \"Gdańsk\",\n        \"zip_code\": \"80-001\"\n    }\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/doctor",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"doctor"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Retrieves the collection of DoctorOutput resources.",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/doctor",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctor"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "DoctorOutput collection response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/doctor",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"doctor"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n {\n  \"id\": 1,\n  \"first_name\": \"Patch\",\n  \"surname\": \"Adams\",\n  \"is_specialist\": false,\n  \"address\": {\n   \"id\": 1,\n   \"house_number\": \"10/1\",\n   \"street\": \"Gołuńska\",\n   \"city\": \"Bydgoszcz\",\n   \"zip_code\": \"26-327\"\n  }\n },\n {\n  \"id\": 1,\n  \"first_name\": \"Patch\",\n  \"surname\": \"Adams\",\n  \"is_specialist\": false,\n  \"address\": {\n   \"id\": 1,\n   \"house_number\": \"10/1\",\n   \"street\": \"Gołuńska\",\n   \"city\": \"Bydgoszcz\",\n   \"zip_code\": \"26-327\"\n  }\n }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "office-hours",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "Replaces the OfficeHours resource.",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"doctor\": {\n        \"id\": 1,\n        \"first_name\": \"Patch\",\n        \"surname\": \"Adams\",\n        \"is_specialist\": false,\n        \"address\": {\n            \"id\": 1,\n            \"house_number\": \"10/1\",\n            \"street\": \"Gołuńska\",\n            \"city\": \"Bydgoszcz\",\n            \"zip_code\": \"26-327\"\n        }\n    },\n    \"day\": 2,\n    \"startHour\": \"06:05:00\",\n    \"endHour\": \"12:30:00\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/office-hours/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"office-hours",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "2",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OfficeHours resource updated",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"doctor\": {\n        \"id\": 1,\n        \"first_name\": \"Patch\",\n        \"surname\": \"Adams\",\n        \"is_specialist\": false,\n        \"address\": {\n            \"id\": 1,\n            \"house_number\": \"10/1\",\n            \"street\": \"Gołuńska\",\n            \"city\": \"Bydgoszcz\",\n            \"zip_code\": \"26-327\"\n        }\n    },\n    \"day\": 2,\n    \"startHour\": \"06:05:00\",\n    \"endHour\": \"12:30:00\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/office-hours/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"office-hours",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"doctor\": {\n  \"id\": 1,\n  \"first_name\": \"Patch\",\n  \"surname\": \"Adams\",\n  \"is_specialist\": false,\n  \"address\": {\n   \"id\": 1,\n   \"house_number\": \"10/1\",\n   \"street\": \"Gołuńska\",\n   \"city\": \"Bydgoszcz\",\n   \"zip_code\": \"26-327\"\n  }\n },\n \"day\": 2,\n \"startHour\": \"06:05:00\",\n \"endHour\": \"12:30:00\"\n}"
+										},
+										{
+											"name": "Invalid input",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"doctor\": {\n        \"id\": 1,\n        \"first_name\": \"Patch\",\n        \"surname\": \"Adams\",\n        \"is_specialist\": false,\n        \"address\": {\n            \"id\": 1,\n            \"house_number\": \"10/1\",\n            \"street\": \"Gołuńska\",\n            \"city\": \"Bydgoszcz\",\n            \"zip_code\": \"26-327\"\n        }\n    },\n    \"day\": 2,\n    \"startHour\": \"06:05:00\",\n    \"endHour\": \"12:30:00\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/office-hours/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"office-hours",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Resource not found",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"doctor\": {\n        \"id\": 1,\n        \"first_name\": \"Patch\",\n        \"surname\": \"Adams\",\n        \"is_specialist\": false,\n        \"address\": {\n            \"id\": 1,\n            \"house_number\": \"10/1\",\n            \"street\": \"Gołuńska\",\n            \"city\": \"Bydgoszcz\",\n            \"zip_code\": \"26-327\"\n        }\n    },\n    \"day\": 2,\n    \"startHour\": \"06:05:00\",\n    \"endHour\": \"12:30:00\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/office-hours/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"office-hours",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Retrieves a OfficeHoursrOutput resource.",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/office-hours/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"office-hours",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OfficeHoursOutput resource response",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/office-hours/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"office-hours",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "null"
+										},
+										{
+											"name": "Resource not found",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/office-hours/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"office-hours",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Removes the OfficeHours resource.",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/office-hours/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"office-hours",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OfficeHours resource deleted",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/office-hours/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"office-hours",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "No Content",
+											"code": 204,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Resource not found",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/office-hours/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"office-hours",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Creates a OfficeHoursCreate resource.",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"day\": 4,\n    \"startHour\": \"07:00:00\",\n    \"endHour\": \"12:30:00\",\n    \"doctor\": {\n        \"id\": 1,\n        \"first_name\": \"Patch\",\n        \"surname\": \"Adams\",\n        \"is_specialist\": false,\n        \"address\": {\n            \"id\": 1,\n            \"house_number\": \"10/1\",\n            \"street\": \"Gołuńska\",\n            \"city\": \"Bydgoszcz\",\n            \"zip_code\": \"26-327\"\n        }\n    }\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/office-hours",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"office-hours"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OfficeHoursCreate resource created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"day\": 4,\n    \"startHour\": \"07:00:00\",\n    \"endHour\": \"12:30:00\",\n    \"doctor\": {\n        \"id\": 1,\n        \"first_name\": \"Patch\",\n        \"surname\": \"Adams\",\n        \"is_specialist\": false,\n        \"address\": {\n            \"id\": 1,\n            \"house_number\": \"10/1\",\n            \"street\": \"Gołuńska\",\n            \"city\": \"Bydgoszcz\",\n            \"zip_code\": \"26-327\"\n        }\n    }\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/office-hours",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"office-hours"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "null"
+								},
+								{
+									"name": "Invalid input",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"day\": 4,\n    \"startHour\": \"07:00:00\",\n    \"endHour\": \"12:30:00\",\n    \"doctor\": {\n        \"id\": 1,\n        \"first_name\": \"Patch\",\n        \"surname\": \"Adams\",\n        \"is_specialist\": false,\n        \"address\": {\n            \"id\": 1,\n            \"house_number\": \"10/1\",\n            \"street\": \"Gołuńska\",\n            \"city\": \"Bydgoszcz\",\n            \"zip_code\": \"26-327\"\n        }\n    }\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/office-hours",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"office-hours"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Resource not found",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"day\": 4,\n    \"startHour\": \"07:00:00\",\n    \"endHour\": \"12:30:00\",\n    \"doctor\": {\n        \"id\": 1,\n        \"first_name\": \"Patch\",\n        \"surname\": \"Adams\",\n        \"is_specialist\": false,\n        \"address\": {\n            \"id\": 1,\n            \"house_number\": \"10/1\",\n            \"street\": \"Gołuńska\",\n            \"city\": \"Bydgoszcz\",\n            \"zip_code\": \"26-327\"\n        }\n    }\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/office-hours",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"office-hours"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Retrieves the collection of OfficeHoursOutput resources.",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/office-hours",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"office-hours"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OfficeHoursOutput collection response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/office-hours",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"office-hours"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "null"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "patient",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "Replaces the Patient resource.",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"first_name\": \"Grzegorz\",\n    \"surname\": \"Smolarek\",\n    \"address\": {\n        \"id\": 2,\n        \"house_number\": \"7\",\n        \"street\": \"Dobrzyńska\",\n        \"city\": \"Katowice\",\n        \"zip_code\": \"33-512\"\n    }\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/patient/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"patient",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "2",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Patient resource updated",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"first_name\": \"Grzegorz\",\n    \"surname\": \"Smolarek\",\n    \"address\": {\n        \"id\": 2,\n        \"house_number\": \"7\",\n        \"street\": \"Dobrzyńska\",\n        \"city\": \"Katowice\",\n        \"zip_code\": \"33-512\"\n    }\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/patient/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"patient",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"first_name\": \"Grzegorz\",\n \"surname\": \"Smolarek\",\n \"address\": {\n  \"id\": 2,\n  \"house_number\": \"7\",\n  \"street\": \"Dobrzyńska\",\n  \"city\": \"Katowice\",\n  \"zip_code\": \"33-512\"\n }\n}"
+										},
+										{
+											"name": "Invalid input",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"first_name\": \"Grzegorz\",\n    \"surname\": \"Smolarek\",\n    \"address\": {\n        \"id\": 2,\n        \"house_number\": \"7\",\n        \"street\": \"Dobrzyńska\",\n        \"city\": \"Katowice\",\n        \"zip_code\": \"33-512\"\n    }\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/patient/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"patient",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Resource not found",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"first_name\": \"Grzegorz\",\n    \"surname\": \"Smolarek\",\n    \"address\": {\n        \"id\": 2,\n        \"house_number\": \"7\",\n        \"street\": \"Dobrzyńska\",\n        \"city\": \"Katowice\",\n        \"zip_code\": \"33-512\"\n    }\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/patient/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"patient",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Retrieves a PatientOutput resource.",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/patient/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"patient",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "PatientOutput resource response",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/patient/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"patient",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"id\": 1,\n \"first_name\": \"Tadeusz\",\n \"surname\": \"Laskowski\",\n \"address\": {\n  \"id\": 1,\n  \"house_number\": \"1a\",\n  \"street\": \"Jarominiaka\",\n  \"city\": \"Zabrze\",\n  \"zip_code\": \"72-672\"\n }\n}"
+										},
+										{
+											"name": "Resource not found",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/patient/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"patient",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Removes the Patient resource.",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/patient/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"patient",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Patient resource deleted",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/patient/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"patient",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "No Content",
+											"code": 204,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Resource not found",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/patient/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"patient",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "address",
+							"item": [
+								{
+									"name": "{id}",
+									"item": [
+										{
+											"name": "Replaces the PatientAddress resource.",
+											"request": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"house_number\": \"12\",\n    \"street\": \"Wspólna\",\n    \"city\": \"Warszawa\",\n    \"zip_code\": \"00-722\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/patient/address/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"patient",
+														"address",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "2",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "PatientAddress resource updated",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"house_number\": \"12\",\n    \"street\": \"Wspólna\",\n    \"city\": \"Warszawa\",\n    \"zip_code\": \"00-722\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/patient/address/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"patient",
+																"address",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"house_number\": \"12\",\n \"street\": \"Wspólna\",\n \"city\": \"Warszawa\",\n \"zip_code\": \"00-722\"\n}"
+												},
+												{
+													"name": "Invalid input",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"house_number\": \"12\",\n    \"street\": \"Wspólna\",\n    \"city\": \"Warszawa\",\n    \"zip_code\": \"00-722\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/patient/address/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"patient",
+																"address",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "text",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "text/plain"
+														}
+													],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "Resource not found",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"house_number\": \"12\",\n    \"street\": \"Wspólna\",\n    \"city\": \"Warszawa\",\n    \"zip_code\": \"00-722\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/patient/address/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"patient",
+																"address",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "text",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "text/plain"
+														}
+													],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										},
+										{
+											"name": "Retrieves a PatientAddressOutput resource.",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/patient/address/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"patient",
+														"address",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "PatientAddressOutput resource response",
+													"originalRequest": {
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/patient/address/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"patient",
+																"address",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"id\": 1,\n \"house_number\": \"1a\",\n \"street\": \"Jarominiaka\",\n \"city\": \"Zabrze\",\n \"zip_code\": \"72-672\"\n}"
+												},
+												{
+													"name": "Resource not found",
+													"originalRequest": {
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/patient/address/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"patient",
+																"address",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "text",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "text/plain"
+														}
+													],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										},
+										{
+											"name": "Removes the PatientAddress resource.",
+											"request": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/patient/address/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"patient",
+														"address",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "PatientAddress resource deleted",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/patient/address/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"patient",
+																"address",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "No Content",
+													"code": 204,
+													"_postman_previewlanguage": "text",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "text/plain"
+														}
+													],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "Resource not found",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/patient/address/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"patient",
+																"address",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "text",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "text/plain"
+														}
+													],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "Creates a PatientAddressCreate resource.",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"house_number\": \"13\",\n    \"street\": \"Murarska\",\n    \"city\": \"Radom\",\n    \"zip_code\": \"26-610\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/patient/address",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"patient",
+												"address"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "PatientAddressCreate resource created",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"house_number\": \"13\",\n    \"street\": \"Murarska\",\n    \"city\": \"Radom\",\n    \"zip_code\": \"26-610\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/patient/address",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"patient",
+														"address"
+													]
+												}
+											},
+											"status": "Created",
+											"code": 201,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"house_number\": \"13\",\n \"street\": \"Murarska\",\n \"city\": \"Radom\",\n \"zip_code\": \"26-610\"\n}"
+										},
+										{
+											"name": "Invalid input",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"house_number\": \"13\",\n    \"street\": \"Murarska\",\n    \"city\": \"Radom\",\n    \"zip_code\": \"26-610\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/patient/address",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"patient",
+														"address"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Resource not found",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"house_number\": \"13\",\n    \"street\": \"Murarska\",\n    \"city\": \"Radom\",\n    \"zip_code\": \"26-610\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/patient/address",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"patient",
+														"address"
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Retrieves the collection of PatientAddressOutput resources.",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/patient/address",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"patient",
+												"address"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "PatientAddressOutput collection response",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/patient/address",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"patient",
+														"address"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "[\n {\n  \"id\": 1,\n  \"house_number\": \"1a\",\n  \"street\": \"Jarominiaka\",\n  \"city\": \"Zabrze\",\n  \"zip_code\": \"72-672\"\n },\n {\n  \"id\": 1,\n  \"house_number\": \"1a\",\n  \"street\": \"Jarominiaka\",\n  \"city\": \"Zabrze\",\n  \"zip_code\": \"72-672\"\n }\n]"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Creates a PatientCreate resource.",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"Marcin\",\n    \"surname\": \"Szumowski\",\n    \"address\": {\n        \"id\": 1,\n        \"house_number\": \"1a\",\n        \"street\": \"Jarominiaka\",\n        \"city\": \"Zabrze\",\n        \"zip_code\": \"72-672\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/patient",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"patient"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "PatientCreate resource created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"first_name\": \"Marcin\",\n    \"surname\": \"Szumowski\",\n    \"address\": {\n        \"id\": 1,\n        \"house_number\": \"1a\",\n        \"street\": \"Jarominiaka\",\n        \"city\": \"Zabrze\",\n        \"zip_code\": \"72-672\"\n    }\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/patient",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"patient"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"first_name\": \"Marcin\",\n \"surname\": \"Szumowski\",\n \"address\": {\n  \"id\": 1,\n  \"house_number\": \"1a\",\n  \"street\": \"Jarominiaka\",\n  \"city\": \"Zabrze\",\n  \"zip_code\": \"72-672\"\n }\n}"
+								},
+								{
+									"name": "Invalid input",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"first_name\": \"Marcin\",\n    \"surname\": \"Szumowski\",\n    \"address\": {\n        \"id\": 1,\n        \"house_number\": \"1a\",\n        \"street\": \"Jarominiaka\",\n        \"city\": \"Zabrze\",\n        \"zip_code\": \"72-672\"\n    }\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/patient",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"patient"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Resource not found",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"first_name\": \"Marcin\",\n    \"surname\": \"Szumowski\",\n    \"address\": {\n        \"id\": 1,\n        \"house_number\": \"1a\",\n        \"street\": \"Jarominiaka\",\n        \"city\": \"Zabrze\",\n        \"zip_code\": \"72-672\"\n    }\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/patient",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"patient"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Retrieves the collection of PatientOutput resources.",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/patient",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"patient"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "PatientOutput collection response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/patient",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"patient"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n {\n  \"id\": 1,\n  \"first_name\": \"Tadeusz\",\n  \"surname\": \"Laskowski\",\n  \"address\": {\n   \"id\": 1,\n   \"house_number\": \"1a\",\n   \"street\": \"Jarominiaka\",\n   \"city\": \"Zabrze\",\n   \"zip_code\": \"72-672\"\n  }\n },\n {\n  \"id\": 1,\n  \"first_name\": \"Tadeusz\",\n  \"surname\": \"Laskowski\",\n  \"address\": {\n   \"id\": 1,\n   \"house_number\": \"1a\",\n   \"street\": \"Jarominiaka\",\n   \"city\": \"Zabrze\",\n   \"zip_code\": \"72-672\"\n  }\n }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "prescription",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "Replaces the Prescription resource.",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"description\": \"pół tableki rano i jedna wieczoem\",\n    \"medicines\": \"Etopiryna\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/prescription/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"prescription",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "2",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Prescription resource updated",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"description\": \"pół tableki rano i jedna wieczoem\",\n    \"medicines\": \"Etopiryna\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/prescription/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"prescription",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"description\": \"pół tableki rano i jedna wieczoem\",\n \"medicines\": \"Etopiryna\"\n}"
+										},
+										{
+											"name": "Invalid input",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"description\": \"pół tableki rano i jedna wieczoem\",\n    \"medicines\": \"Etopiryna\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/prescription/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"prescription",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Resource not found",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"description\": \"pół tableki rano i jedna wieczoem\",\n    \"medicines\": \"Etopiryna\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/prescription/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"prescription",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Retrieves a PrescriptionOutput resource.",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/prescription/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"prescription",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "PrescriptionOutput resource response",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/prescription/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"prescription",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"id\": 1,\n \"description\": \"dwa razy dziennie rano i wieczorem brać 1 tabletkę\",\n \"medicines\": \"Migea\"\n}"
+										},
+										{
+											"name": "Resource not found",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/prescription/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"prescription",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Removes the Prescription resource.",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/prescription/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"prescription",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Prescription resource deleted",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/prescription/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"prescription",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "No Content",
+											"code": 204,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Resource not found",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/prescription/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"prescription",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Creates a PrescriptionCreate resource.",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"description\": \"pół tabletki rano i wieczorem\",\n    \"medicines\": \"Atenolol Sanofi\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/prescription",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"prescription"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "PrescriptionCreate resource created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"description\": \"pół tabletki rano i wieczorem\",\n    \"medicines\": \"Atenolol Sanofi\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/prescription",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"prescription"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"patient\": {\n  \"id\": 1,\n  \"first_name\": \"Tadeusz\",\n  \"surname\": \"Laskowski\",\n  \"address\": {\n   \"id\": 1,\n   \"house_number\": \"1a\",\n   \"street\": \"Jarominiaka\",\n   \"city\": \"Zabrze\",\n   \"zip_code\": \"72-672\"\n  }\n },\n \"doctor\": {\n  \"id\": 1,\n  \"first_name\": \"Patch\",\n  \"surname\": \"Adams\",\n  \"is_specialist\": false,\n  \"address\": {\n   \"id\": 1,\n   \"house_number\": \"10/1\",\n   \"street\": \"Gołuńska\",\n   \"city\": \"Bydgoszcz\",\n   \"zip_code\": \"26-327\"\n  }\n },\n \"description\": \"pół tabletki rano i wieczorem\",\n \"medicines\": \"Atenolol Sanofi\"\n}"
+								},
+								{
+									"name": "Invalid input",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"description\": \"pół tabletki rano i wieczorem\",\n    \"medicines\": \"Atenolol Sanofi\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/prescription",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"prescription"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Resource not found",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"description\": \"pół tabletki rano i wieczorem\",\n    \"medicines\": \"Atenolol Sanofi\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/prescription",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"prescription"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Retrieves the collection of PrescriptionOutput resources.",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/prescription",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"prescription"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "PrescriptionOutput collection response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/prescription",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"prescription"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n {\n  \"id\": 1,\n  \"description\": \"dwa razy dziennie rano i wieczorem brać 1 tabletkę\",\n  \"medicines\": \"Migea\"\n },\n {\n  \"id\": 1,\n  \"description\": \"dwa razy dziennie rano i wieczorem brać 1 tabletkę\",\n  \"medicines\": \"Migea\"\n }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "visit",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "Replaces the Visit resource.",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"patient\": {\n        \"id\": 1,\n        \"first_name\": \"Tadeusz\",\n        \"surname\": \"Laskowski\",\n        \"address\": {\n            \"id\": 1,\n            \"house_number\": \"1a\",\n            \"street\": \"Jarominiaka\",\n            \"city\": \"Zabrze\",\n            \"zip_code\": \"72-672\"\n        }\n    },\n    \"doctor\": {\n        \"id\": 1,\n        \"first_name\": \"Patch\",\n        \"surname\": \"Adams\",\n        \"is_specialist\": false,\n        \"address\": {\n            \"id\": 1,\n            \"house_number\": \"10/1\",\n            \"street\": \"Gołuńska\",\n            \"city\": \"Bydgoszcz\",\n            \"zip_code\": \"26-327\"\n        }\n    },\n    \"patientDescription\": \"Ból mięśni i stawów\",\n    \"doctorDescription\": \"Przeciążenie\",\n    \"prescription\": {\n        \"id\": 1,\n        \"description\": \"Skierowanie na badanie\",\n        \"medicines\": \"Rutinacea\"\n    },\n    \"registrationDate\": 1621548000000,\n    \"visitDate\": 1624869000000,\n    \"visitMade\": false,\n    \"cancelCause\": null,\n    \"examination\": false\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/visit/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"visit",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "2",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Visit resource updated",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"patient\": {\n        \"id\": 1,\n        \"first_name\": \"Tadeusz\",\n        \"surname\": \"Laskowski\",\n        \"address\": {\n            \"id\": 1,\n            \"house_number\": \"1a\",\n            \"street\": \"Jarominiaka\",\n            \"city\": \"Zabrze\",\n            \"zip_code\": \"72-672\"\n        }\n    },\n    \"doctor\": {\n        \"id\": 1,\n        \"first_name\": \"Patch\",\n        \"surname\": \"Adams\",\n        \"is_specialist\": false,\n        \"address\": {\n            \"id\": 1,\n            \"house_number\": \"10/1\",\n            \"street\": \"Gołuńska\",\n            \"city\": \"Bydgoszcz\",\n            \"zip_code\": \"26-327\"\n        }\n    },\n    \"patientDescription\": \"Ból mięśni i stawów\",\n    \"doctorDescription\": \"Przeciążenie\",\n    \"prescription\": {\n        \"id\": 1,\n        \"description\": \"Skierowanie na badanie\",\n        \"medicines\": \"Rutinacea\"\n    },\n    \"registrationDate\": 1621548000000,\n    \"visitDate\": 1624869000000,\n    \"visitMade\": false,\n    \"cancelCause\": null,\n    \"examination\": false\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/visit/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"visit",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"patient\": {\n  \"id\": 1,\n  \"first_name\": \"Tadeusz\",\n  \"surname\": \"Laskowski\",\n  \"address\": {\n   \"id\": 1,\n   \"house_number\": \"1a\",\n   \"street\": \"Jarominiaka\",\n   \"city\": \"Zabrze\",\n   \"zip_code\": \"72-672\"\n  }\n },\n \"doctor\": {\n  \"id\": 1,\n  \"first_name\": \"Patch\",\n  \"surname\": \"Adams\",\n  \"is_specialist\": false,\n  \"address\": {\n   \"id\": 1,\n   \"house_number\": \"10/1\",\n   \"street\": \"Gołuńska\",\n   \"city\": \"Bydgoszcz\",\n   \"zip_code\": \"26-327\"\n  }\n },\n \"patientDescription\": \"Ból mięśni i stawów\",\n \"doctorDescription\": \"Przeciążenie\",\n \"prescription\": {\n  \"id\": 1,\n  \"description\": \"Skierowanie na badanie\",\n  \"medicines\": \"Rutinacea\"\n },\n \"registrationDate\": 1621548000000,\n \"visitDate\": 1624869000000,\n \"visitMade\": false,\n \"cancelCause\": null,\n \"examination\": false\n}"
+										},
+										{
+											"name": "Invalid input",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"patient\": {\n        \"id\": 1,\n        \"first_name\": \"Tadeusz\",\n        \"surname\": \"Laskowski\",\n        \"address\": {\n            \"id\": 1,\n            \"house_number\": \"1a\",\n            \"street\": \"Jarominiaka\",\n            \"city\": \"Zabrze\",\n            \"zip_code\": \"72-672\"\n        }\n    },\n    \"doctor\": {\n        \"id\": 1,\n        \"first_name\": \"Patch\",\n        \"surname\": \"Adams\",\n        \"is_specialist\": false,\n        \"address\": {\n            \"id\": 1,\n            \"house_number\": \"10/1\",\n            \"street\": \"Gołuńska\",\n            \"city\": \"Bydgoszcz\",\n            \"zip_code\": \"26-327\"\n        }\n    },\n    \"patientDescription\": \"Ból mięśni i stawów\",\n    \"doctorDescription\": \"Przeciążenie\",\n    \"prescription\": {\n        \"id\": 1,\n        \"description\": \"Skierowanie na badanie\",\n        \"medicines\": \"Rutinacea\"\n    },\n    \"registrationDate\": 1621548000000,\n    \"visitDate\": 1624869000000,\n    \"visitMade\": false,\n    \"cancelCause\": null,\n    \"examination\": false\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/visit/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"visit",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Resource not found",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"patient\": {\n        \"id\": 1,\n        \"first_name\": \"Tadeusz\",\n        \"surname\": \"Laskowski\",\n        \"address\": {\n            \"id\": 1,\n            \"house_number\": \"1a\",\n            \"street\": \"Jarominiaka\",\n            \"city\": \"Zabrze\",\n            \"zip_code\": \"72-672\"\n        }\n    },\n    \"doctor\": {\n        \"id\": 1,\n        \"first_name\": \"Patch\",\n        \"surname\": \"Adams\",\n        \"is_specialist\": false,\n        \"address\": {\n            \"id\": 1,\n            \"house_number\": \"10/1\",\n            \"street\": \"Gołuńska\",\n            \"city\": \"Bydgoszcz\",\n            \"zip_code\": \"26-327\"\n        }\n    },\n    \"patientDescription\": \"Ból mięśni i stawów\",\n    \"doctorDescription\": \"Przeciążenie\",\n    \"prescription\": {\n        \"id\": 1,\n        \"description\": \"Skierowanie na badanie\",\n        \"medicines\": \"Rutinacea\"\n    },\n    \"registrationDate\": 1621548000000,\n    \"visitDate\": 1624869000000,\n    \"visitMade\": false,\n    \"cancelCause\": null,\n    \"examination\": false\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/visit/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"visit",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Retrieves a VisitOutput resource.",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/visit/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"visit",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "VisitOutput resource response",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/visit/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"visit",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"id\": 1,\n \"patient\": {\n  \"id\": 1,\n  \"first_name\": \"Tadeusz\",\n  \"surname\": \"Laskowski\",\n  \"address\": {\n   \"id\": 1,\n   \"house_number\": \"1a\",\n   \"street\": \"Jarominiaka\",\n   \"city\": \"Zabrze\",\n   \"zip_code\": \"72-672\"\n  }\n },\n \"doctor\": {\n  \"id\": 1,\n  \"first_name\": \"Patch\",\n  \"surname\": \"Adams\",\n  \"is_specialist\": false,\n  \"address\": {\n   \"id\": 1,\n   \"house_number\": \"10/1\",\n   \"street\": \"Gołuńska\",\n   \"city\": \"Bydgoszcz\",\n   \"zip_code\": \"26-327\"\n  }\n },\n \"patientDescription\": \"Ból głowy\",\n \"doctorDescription\": \"Migrena\",\n \"prescription\": {\n  \"id\": 1,\n  \"description\": \"dwa razy dziennie rano i wieczorem brać 1 tabletkę\",\n  \"medicines\": \"Migea\"\n },\n \"registrationDate\": 1621548000000,\n \"visitDate\": 1624869000000,\n \"visitMade\": true,\n \"cancelCause\": \"Termin szczepienie się pokrywa\",\n \"examination\": false\n}"
+										},
+										{
+											"name": "Resource not found",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/visit/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"visit",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Removes the Visit resource.",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/visit/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"visit",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Visit resource deleted",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/visit/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"visit",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "No Content",
+											"code": 204,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Resource not found",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/visit/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"visit",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Creates a VisitCreate resource.",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"patient\": {\n        \"id\": 1,\n        \"first_name\": \"Tadeusz\",\n        \"surname\": \"Laskowski\",\n        \"address\": {\n            \"id\": 1,\n            \"house_number\": \"1a\",\n            \"street\": \"Jarominiaka\",\n            \"city\": \"Zabrze\",\n            \"zip_code\": \"72-672\"\n        }\n    },\n    \"doctor\": {\n        \"id\": 1,\n        \"first_name\": \"Patch\",\n        \"surname\": \"Adams\",\n        \"is_specialist\": false,\n        \"address\": {\n            \"id\": 1,\n            \"house_number\": \"10/1\",\n            \"street\": \"Gołuńska\",\n            \"city\": \"Bydgoszcz\",\n            \"zip_code\": \"26-327\"\n        }\n    },\n    \"patientDescription\": \"Lorem ipsum\",\n    \"doctorDescription\": \"Lorem ipsum\",\n    \"prescription\": {\n        \"id\": 1,\n        \"description\": \"Skierowanie na badanie\",\n        \"medicines\": \"Rutinacea\"\n    },\n    \"registrationDate\": 1620770400000,\n    \"visitDate\": 1624879800000,\n    \"visitMade\": true,\n    \"cancelCause\": \"Lorem ipsum\",\n    \"examination\": false\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/visit",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"visit"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "VisitCreate resource created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"patient\": {\n        \"id\": 1,\n        \"first_name\": \"Tadeusz\",\n        \"surname\": \"Laskowski\",\n        \"address\": {\n            \"id\": 1,\n            \"house_number\": \"1a\",\n            \"street\": \"Jarominiaka\",\n            \"city\": \"Zabrze\",\n            \"zip_code\": \"72-672\"\n        }\n    },\n    \"doctor\": {\n        \"id\": 1,\n        \"first_name\": \"Patch\",\n        \"surname\": \"Adams\",\n        \"is_specialist\": false,\n        \"address\": {\n            \"id\": 1,\n            \"house_number\": \"10/1\",\n            \"street\": \"Gołuńska\",\n            \"city\": \"Bydgoszcz\",\n            \"zip_code\": \"26-327\"\n        }\n    },\n    \"patientDescription\": \"Lorem ipsum\",\n    \"doctorDescription\": \"Lorem ipsum\",\n    \"prescription\": {\n        \"id\": 1,\n        \"description\": \"Skierowanie na badanie\",\n        \"medicines\": \"Rutinacea\"\n    },\n    \"registrationDate\": 1620770400000,\n    \"visitDate\": 1624879800000,\n    \"visitMade\": true,\n    \"cancelCause\": \"Lorem ipsum\",\n    \"examination\": false\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/visit",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"visit"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"patient\": {\n  \"id\": 1,\n  \"first_name\": \"Tadeusz\",\n  \"surname\": \"Laskowski\",\n  \"address\": {\n   \"id\": 1,\n   \"house_number\": \"1a\",\n   \"street\": \"Jarominiaka\",\n   \"city\": \"Zabrze\",\n   \"zip_code\": \"72-672\"\n  }\n },\n \"doctor\": {\n  \"id\": 1,\n  \"first_name\": \"Patch\",\n  \"surname\": \"Adams\",\n  \"is_specialist\": false,\n  \"address\": {\n   \"id\": 1,\n   \"house_number\": \"10/1\",\n   \"street\": \"Gołuńska\",\n   \"city\": \"Bydgoszcz\",\n   \"zip_code\": \"26-327\"\n  }\n },\n \"patientDescription\": \"Ból głowy\",\n \"doctorDescription\": \"Migrena\",\n \"prescription\": {\n  \"id\": 1,\n  \"description\": \"Skierowanie na badanie\",\n  \"medicines\": \"Rutinacea\"\n },\n \"registrationDate\": 1620770400000,\n \"visitDate\": 1624879800000,\n \"cancelCause\": \"Termin szczepienie się pokrywa\",\n \"examination\": false\n}"
+								},
+								{
+									"name": "Invalid input",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"patient\": {\n        \"id\": 1,\n        \"first_name\": \"Tadeusz\",\n        \"surname\": \"Laskowski\",\n        \"address\": {\n            \"id\": 1,\n            \"house_number\": \"1a\",\n            \"street\": \"Jarominiaka\",\n            \"city\": \"Zabrze\",\n            \"zip_code\": \"72-672\"\n        }\n    },\n    \"doctor\": {\n        \"id\": 1,\n        \"first_name\": \"Patch\",\n        \"surname\": \"Adams\",\n        \"is_specialist\": false,\n        \"address\": {\n            \"id\": 1,\n            \"house_number\": \"10/1\",\n            \"street\": \"Gołuńska\",\n            \"city\": \"Bydgoszcz\",\n            \"zip_code\": \"26-327\"\n        }\n    },\n    \"patientDescription\": \"Lorem ipsum\",\n    \"doctorDescription\": \"Lorem ipsum\",\n    \"prescription\": {\n        \"id\": 1,\n        \"description\": \"Skierowanie na badanie\",\n        \"medicines\": \"Rutinacea\"\n    },\n    \"registrationDate\": 1620770400000,\n    \"visitDate\": 1624879800000,\n    \"visitMade\": true,\n    \"cancelCause\": \"Lorem ipsum\",\n    \"examination\": false\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/visit",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"visit"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Resource not found",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"patient\": {\n        \"id\": 1,\n        \"first_name\": \"Tadeusz\",\n        \"surname\": \"Laskowski\",\n        \"address\": {\n            \"id\": 1,\n            \"house_number\": \"1a\",\n            \"street\": \"Jarominiaka\",\n            \"city\": \"Zabrze\",\n            \"zip_code\": \"72-672\"\n        }\n    },\n    \"doctor\": {\n        \"id\": 1,\n        \"first_name\": \"Patch\",\n        \"surname\": \"Adams\",\n        \"is_specialist\": false,\n        \"address\": {\n            \"id\": 1,\n            \"house_number\": \"10/1\",\n            \"street\": \"Gołuńska\",\n            \"city\": \"Bydgoszcz\",\n            \"zip_code\": \"26-327\"\n        }\n    },\n    \"patientDescription\": \"Lorem ipsum\",\n    \"doctorDescription\": \"Lorem ipsum\",\n    \"prescription\": {\n        \"id\": 1,\n        \"description\": \"Skierowanie na badanie\",\n        \"medicines\": \"Rutinacea\"\n    },\n    \"registrationDate\": 1620770400000,\n    \"visitDate\": 1624879800000,\n    \"visitMade\": true,\n    \"cancelCause\": \"Lorem ipsum\",\n    \"examination\": false\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/visit",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"visit"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Retrieves the collection of VisitOutput resources.",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/visit",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"visit"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "VisitOutput collection response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/visit",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"visit"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n {\n  \"id\": 1,\n  \"patient\": {\n   \"id\": 1,\n   \"first_name\": \"Tadeusz\",\n   \"surname\": \"Laskowski\",\n   \"address\": {\n    \"id\": 1,\n    \"house_number\": \"1a\",\n    \"street\": \"Jarominiaka\",\n    \"city\": \"Zabrze\",\n    \"zip_code\": \"72-672\"\n   }\n  },\n  \"doctor\": {\n   \"id\": 1,\n   \"first_name\": \"Patch\",\n   \"surname\": \"Adams\",\n   \"is_specialist\": false,\n   \"address\": {\n    \"id\": 1,\n    \"house_number\": \"10/1\",\n    \"street\": \"Gołuńska\",\n    \"city\": \"Bydgoszcz\",\n    \"zip_code\": \"26-327\"\n   }\n  },\n  \"patientDescription\": \"Ból głowy\",\n  \"doctorDescription\": \"Migrena\",\n  \"prescription\": {\n   \"id\": 1,\n   \"description\": \"dwa razy dziennie rano i wieczorem brać 1 tabletkę\",\n   \"medicines\": \"Migea\"\n  },\n  \"registrationDate\": 1621548000000,\n  \"visitDate\": 1624869000000,\n  \"visitMade\": true,\n  \"cancelCause\": \"Termin szczepienie się pokrywa\",\n  \"examination\": false\n },\n {\n  \"id\": 1,\n  \"patient\": {\n   \"id\": 1,\n   \"first_name\": \"Tadeusz\",\n   \"surname\": \"Laskowski\",\n   \"address\": {\n    \"id\": 1,\n    \"house_number\": \"1a\",\n    \"street\": \"Jarominiaka\",\n    \"city\": \"Zabrze\",\n    \"zip_code\": \"72-672\"\n   }\n  },\n  \"doctor\": {\n   \"id\": 1,\n   \"first_name\": \"Patch\",\n   \"surname\": \"Adams\",\n   \"is_specialist\": false,\n   \"address\": {\n    \"id\": 1,\n    \"house_number\": \"10/1\",\n    \"street\": \"Gołuńska\",\n    \"city\": \"Bydgoszcz\",\n    \"zip_code\": \"26-327\"\n   }\n  },\n  \"patientDescription\": \"Ból głowy\",\n  \"doctorDescription\": \"Migrena\",\n  \"prescription\": {\n   \"id\": 1,\n   \"description\": \"dwa razy dziennie rano i wieczorem brać 1 tabletkę\",\n   \"medicines\": \"Migea\"\n  },\n  \"registrationDate\": 1621548000000,\n  \"visitDate\": 1624869000000,\n  \"visitMade\": true,\n  \"cancelCause\": \"Termin szczepienie się pokrywa\",\n  \"examination\": false\n }\n]"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080/clinic",
+			"type": "string"
+		}
+	]
+}

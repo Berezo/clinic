@@ -1,0 +1,1606 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Clinic
+servers:
+  - url: 'http://localhost:8080/clinic'
+paths:
+  '/api/doctor':
+    post:
+      tags:
+        - 'Doctor'
+      operationId: postDoctorCollection
+      summary: 'Creates a DoctorCreate resource.'
+      responses:
+        201:
+          description: 'DoctorCreate resource created'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DoctorCreate:1'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DoctorCreate'
+        description: 'The new DoctorCreate resource'
+    get:
+      tags:
+        - 'Doctor'
+      operationId: getDoctorCollection
+      summary: 'Retrieves the collection of DoctorOutput resources.'
+      responses:
+        200:
+          description: 'DoctorOutput collection response'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Doctor:1'
+  '/api/doctor/{id}':
+    put:
+      tags:
+        - 'Doctor'
+      operationId: putDoctorItem
+      summary: 'Replaces the Doctor resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: number
+            default: 2
+      responses:
+        200:
+          description: 'Doctor resource updated'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Doctor'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Doctor'
+        description: 'The updated Doctor resource'
+    get:
+      tags:
+        - 'Doctor'
+      operationId: getDoctorItem
+      summary: 'Retrieves a DoctorOutput resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: number
+            default: 1
+      responses:
+        200:
+          description: 'DoctorOutput resource response'
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/Doctor:1'
+        404:
+          description: 'Resource not found'
+    delete:
+      tags:
+        - 'Doctor'
+      operationId: deleteDoctorItem
+      summary: 'Removes the Doctor resource.'
+      responses:
+        204:
+          description: 'Doctor resource deleted'
+        404:
+          description: 'Resource not found'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: number
+            default: 1
+  '/api/doctor/address/{id}':
+    put:
+      tags:
+        - 'DoctorAddress'
+      operationId: putDoctorAddressItem
+      summary: 'Replaces the DoctorAddress resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: number
+            default: 2
+      responses:
+        200:
+          description: 'DoctorAddress resource updated'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DoctorAddress'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DoctorAddress'
+        description: 'The updated DoctorAddress resource'
+    get:
+      tags:
+        - 'DoctorAddress'
+      operationId: getDoctorAddressItem
+      summary: 'Retrieves a DoctorAddressOutput resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: number
+            default: 1
+      responses:
+        200:
+          description: 'DoctorAddressOutput resource response'
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/DoctorAddress:1'
+        404:
+          description: 'Resource not found'
+    delete:
+      tags:
+        - 'DoctorAddress'
+      operationId: deleteDoctorAddressItem
+      summary: 'Removes the DoctorAddress resource.'
+      responses:
+        204:
+          description: 'DoctorAddress resource deleted'
+        404:
+          description: 'Resource not found'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: number
+            default: 1
+  '/api/doctor/address':
+    post:
+      tags:
+        - 'DoctorAddress'
+      operationId: postDoctorAddressrCollection
+      summary: 'Creates a DoctorAddressCreate resource.'
+      responses:
+        201:
+          description: 'DoctorAddressCreate resource created'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DoctorAddressCreate:1'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DoctorAddressCreate'
+        description: 'The new DoctorAddressCreate resource'
+    get:
+      tags:
+        - 'DoctorAddress'
+      operationId: getDoctorAddressCollection
+      summary: 'Retrieves the collection of DoctorAddressOutput resources.'
+      responses:
+        200:
+          description: 'DoctorAddressOutput collection response'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DoctorAddress:1'
+  '/api/office-hours':
+    post:
+      tags:
+        - 'OfficeHours'
+      operationId: postOfficeHoursCollection
+      summary: 'Creates a OfficeHoursCreate resource.'
+      responses:
+        201:
+          description: 'OfficeHoursCreate resource created'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfficeHoursCreate:1'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OfficeHoursCreate'
+        description: 'The new OfficeHoursCreate resource'
+    get:
+      tags:
+        - 'OfficeHours'
+      operationId: getOfficeHoursCollection
+      summary: 'Retrieves the collection of OfficeHoursOutput resources.'
+      responses:
+        200:
+          description: 'OfficeHoursOutput collection response'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OfficeHours:1'
+  '/api/office-hours/{id}':
+    put:
+      tags:
+        - 'OfficeHours'
+      operationId: putOfficeHoursItem
+      summary: 'Replaces the OfficeHours resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: number
+            default: 2
+      responses:
+        200:
+          description: 'OfficeHours resource updated'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfficeHours'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OfficeHours'
+        description: 'The updated Doctor resource'
+    get:
+      tags:
+        - 'OfficeHours'
+      operationId: getOfficeHoursItem
+      summary: 'Retrieves a OfficeHoursrOutput resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: number
+            default: 1
+      responses:
+        200:
+          description: 'OfficeHoursOutput resource response'
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/OfficeHours:1'
+        404:
+          description: 'Resource not found'
+    delete:
+      tags:
+        - 'OfficeHours'
+      operationId: deleteOfficeHoursItem
+      summary: 'Removes the OfficeHours resource.'
+      responses:
+        204:
+          description: 'OfficeHours resource deleted'
+        404:
+          description: 'Resource not found'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: number
+            default: 1
+  '/api/patient':
+    post:
+      tags:
+        - 'Patient'
+      operationId: postPatientCollection
+      summary: 'Creates a PatientCreate resource.'
+      responses:
+        201:
+          description: 'PatientCreate resource created'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PatientCreate:1'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatientCreate'
+        description: 'The new PatientCreate resource'
+    get:
+      tags:
+        - 'Patient'
+      operationId: getPatientCollection
+      summary: 'Retrieves the collection of PatientOutput resources.'
+      responses:
+        200:
+          description: 'PatientOutput collection response'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Patient:1'
+  '/api/patient/{id}':
+    put:
+      tags:
+        - 'Patient'
+      operationId: putPatientItem
+      summary: 'Replaces the Patient resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: number
+            default: 2
+      responses:
+        200:
+          description: 'Patient resource updated'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Patient'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Patient'
+    get:
+      tags:
+        - 'Patient'
+      operationId: getPatientItem
+      summary: 'Retrieves a PatientOutput resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: number
+            default: 1
+      responses:
+        200:
+          description: 'PatientOutput resource response'
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/Patient:1'
+        404:
+          description: 'Resource not found'
+    delete:
+      tags:
+        - 'Patient'
+      operationId: deletePatientItem
+      summary: 'Removes the Patient resource.'
+      responses:
+        204:
+          description: 'Patient resource deleted'
+        404:
+          description: 'Resource not found'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: number
+            default: 1
+  '/api/patient/address/{id}':
+    put:
+      tags:
+        - 'PatientAddress'
+      operationId: putPatientAddressItem
+      summary: 'Replaces the PatientAddress resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: number
+            default: 2
+      responses:
+        200:
+          description: 'PatientAddress resource updated'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PatientAddress'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatientAddress'
+    get:
+      tags:
+        - 'PatientAddress'
+      operationId: getPatientAddressItem
+      summary: 'Retrieves a PatientAddressOutput resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: number
+            default: 1
+      responses:
+        200:
+          description: 'PatientAddressOutput resource response'
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/PatientAddress:1'
+        404:
+          description: 'Resource not found'
+    delete:
+      tags:
+        - 'PatientAddress'
+      operationId: deletePatientAddressItem
+      summary: 'Removes the PatientAddress resource.'
+      responses:
+        204:
+          description: 'PatientAddress resource deleted'
+        404:
+          description: 'Resource not found'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: number
+            default: 1
+  '/api/patient/address':
+    post:
+      tags:
+        - 'PatientAddress'
+      operationId: postPatientAddressrCollection
+      summary: 'Creates a PatientAddressCreate resource.'
+      responses:
+        201:
+          description: 'PatientAddressCreate resource created'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PatientAddressCreate:1'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatientAddressCreate'
+        description: 'The new PatientAddressCreate resource'
+    get:
+      tags:
+        - 'PatientAddress'
+      operationId: getPatientAddressCollection
+      summary: 'Retrieves the collection of PatientAddressOutput resources.'
+      responses:
+        200:
+          description: 'PatientAddressOutput collection response'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PatientAddress:1'
+  '/api/prescription':
+    post:
+      tags:
+        - 'Prescription'
+      operationId: postPrescriptionCollection
+      summary: 'Creates a PrescriptionCreate resource.'
+      responses:
+        201:
+          description: 'PrescriptionCreate resource created'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrescriptionCreate:1'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PrescriptionCreate'
+        description: 'The new PrescriptionCreate resource'
+    get:
+      tags:
+        - 'Prescription'
+      operationId: getPrescriptionCollection
+      summary: 'Retrieves the collection of PrescriptionOutput resources.'
+      responses:
+        200:
+          description: 'PrescriptionOutput collection response'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Prescription:1'
+  '/api/prescription/{id}':
+    put:
+      tags:
+        - 'Prescription'
+      operationId: putPrescriptionItem
+      summary: 'Replaces the Prescription resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: number
+            default: 2
+      responses:
+        200:
+          description: 'Prescription resource updated'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Prescription'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Prescription'
+        description: 'The updated Prescription resource'
+    get:
+      tags:
+        - 'Prescription'
+      operationId: getPrescriptionItem
+      summary: 'Retrieves a PrescriptionOutput resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: number
+            default: 1
+      responses:
+        200:
+          description: 'PrescriptionOutput resource response'
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/Prescription:1'
+        404:
+          description: 'Resource not found'
+    delete:
+      tags:
+        - 'Prescription'
+      operationId: deletePrescriptionItem
+      summary: 'Removes the Prescription resource.'
+      responses:
+        204:
+          description: 'Prescription resource deleted'
+        404:
+          description: 'Resource not found'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: number
+            default: 1
+  '/api/visit':
+    post:
+      tags:
+        - 'Visit'
+      operationId: postVisitCollection
+      summary: 'Creates a VisitCreate resource.'
+      responses:
+        201:
+          description: 'VisitCreate resource created'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VisitCreate:1'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VisitCreate'
+        description: 'The new VisitCreate resource'
+    get:
+      tags:
+        - 'Visit'
+      operationId: getVisitCollection
+      summary: 'Retrieves the collection of VisitOutput resources.'
+      responses:
+        200:
+          description: 'VisitOutput collection response'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Visit:1'
+  '/api/visit/{id}':
+    put:
+      tags:
+        - 'Visit'
+      operationId: putVisitItem
+      summary: 'Replaces the Visit resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: number
+            default: 2
+      responses:
+        200:
+          description: 'Visit resource updated'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Visit'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Visit'
+        description: 'The updated Visit resource'
+    get:
+      tags:
+        - 'Visit'
+      operationId: getVisitItem
+      summary: 'Retrieves a VisitOutput resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: number
+            default: 1
+      responses:
+        200:
+          description: 'VisitOutput resource response'
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/Visit:1'
+        404:
+          description: 'Resource not found'
+    delete:
+      tags:
+        - 'Visit'
+      operationId: deleteVisitItem
+      summary: 'Removes the Visit resource.'
+      responses:
+        204:
+          description: 'Visit resource deleted'
+        404:
+          description: 'Resource not found'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: number
+            default: 1
+components:
+  schemas:
+    'Doctor':
+      type: object
+      description: ''
+      properties:
+        first_name:
+          example: Grzegorz
+          type: string
+          nullable: false
+        surname:
+          example: Smolarek
+          type: string
+          nullable: false
+        is_specialist:
+          example: true
+          type: boolean
+          nullable: false
+        address:
+          type: object
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/DoctorAddress:2'
+    'Doctor:1':
+      type: object
+      description: ''
+      properties:
+        id:
+          example: 1
+          type: number
+          nullable: false
+        first_name:
+          example: Patch
+          type: string
+          nullable: false
+        surname:
+          example: Adams
+          type: string
+          nullable: false
+        is_specialist:
+          example: false
+          type: boolean
+          nullable: false
+        address:
+          type: object
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/DoctorAddress:1'
+    'Doctor:2':
+      type: object
+      description: ''
+      properties:
+        id:
+          example: 1
+          type: number
+          nullable: false
+    'DoctorAddress':
+      type: object
+      description: ''
+      properties:
+        house_number:
+          example: '12'
+          type: string
+          nullable: true
+        street:
+          example: Wspólna
+          type: string
+          nullable: true
+        city:
+          example: Warszawa
+          type: string
+          nullable: true
+        zip_code:
+          example: 00-722
+          type: string
+          nullable: true 
+    'PatientAddress':
+      type: object
+      description: ''
+      properties:
+        house_number:
+          example: '12'
+          type: string
+          nullable: true
+        street:
+          example: Wspólna
+          type: string
+          nullable: true
+        city:
+          example: Warszawa
+          type: string
+          nullable: true
+        zip_code:
+          example: 00-722
+          type: string
+          nullable: true
+    'DoctorAddress:1':
+      type: object
+      description: ''
+      properties:
+        id:
+          example: 1
+          type: number
+          nullable: false
+        house_number:
+          example: 10/1
+          type: string
+          nullable: true
+        street:
+          example: Gołuńska
+          type: string
+          nullable: true
+        city:
+          example: Bydgoszcz
+          type: string
+          nullable: true
+        zip_code:
+          example: 26-327
+          type: string
+          nullable: true
+    'DoctorAddress:2':
+      type: object
+      description: ''
+      properties:
+        id:
+          example: 2
+          type: number
+          nullable: false
+        house_number:
+          example: '5'
+          type: string
+          nullable: true
+        street:
+          example: Marii Skłodowskiej-Curie
+          type: string
+          nullable: true
+        city:
+          example: Gdańsk
+          type: string
+          nullable: true
+        zip_code:
+          example: 80-001
+          type: string
+          nullable: true
+    'DoctorAddressCreate':
+      type: object
+      description: ''
+      required:
+        - house_number
+        - street
+        - city
+        - zip_code
+      properties:
+        house_number:
+          example: '12'
+          type: string
+          nullable: true
+        street:
+          example: Głowna
+          type: string
+          nullable: true
+        city:
+          example: Radom
+          type: string
+          nullable: true
+        zip_code:
+          example: 26-601
+          type: string
+          nullable: true
+    'DoctorAddressCreate:1':
+      type: object
+      description: ''
+      required:
+        - house_number
+        - street
+        - city
+        - zip_code
+      properties:
+        house_number:
+          example: '12'
+          type: string
+          nullable: true
+        street:
+          example: Głowna
+          type: string
+          nullable: true
+        city:
+          example: Radom
+          type: string
+          nullable: true
+        zip_code:
+          example: 26-601
+          type: string
+          nullable: true
+    'DoctorCreate':
+      type: object
+      description: ''
+      required:
+        - first_name
+        - surname
+        - is_specialist
+        - address
+      properties:
+        first_name:
+          example: Jakub
+          type: string
+          nullable: false
+        surname:
+          example: Górski
+          type: string
+          nullable: false
+        is_specialist:
+          example: true
+          type: boolean
+          nullable: false
+        address:
+          type: object
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/DoctorAddress:2'
+    'DoctorCreate:1':
+      type: object
+      description: ''
+      properties:
+        first_name:
+          example: Jakub
+          type: string
+          nullable: false
+        surname:
+          example: Górski
+          type: string
+          nullable: false
+        is_specialist:
+          example: true
+          type: boolean
+          nullable: false
+        address:
+          type: object
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/DoctorAddress:2'
+    'OfficeHours':
+      type: object
+      description: ''
+      properties:
+        doctor:
+          type: object
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Doctor:1'
+        day:
+          example: 2
+          type: number
+          nullable: false
+        startHour:
+          example: '06:05:00'
+          type: string
+          nullable: false
+        endHour:
+          example: '12:30:00'
+          type: string
+          nullable: false
+    'OfficeHours:1':
+      type: object
+      description: ''
+      properties:
+        id:
+          example: 1
+          type: number
+          nullable: false
+        doctor:
+          type: object
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Doctor:2'
+        day:
+          example: 2
+          type: number
+          nullable: false
+        startHour:
+          example: 08:15:00
+          type: time
+          nullable: false
+        endHour:
+          example: 17:30:00
+          type: time
+          nullable: false
+    'OfficeHours:2':
+      type: object
+      description: ''
+      properties:
+        doctor:
+          type: object
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Doctor:2'
+        day:
+          example: 2
+          type: number
+          nullable: false
+        startHour:
+          example: '06:05:00'
+          type: time
+          nullable: false
+        endHour:
+          example: '12:40:00'
+          type: time
+          nullable: false
+    'OfficeHoursCreate':
+      type: object
+      description: ''
+      required:
+        - day
+        - startHour
+        - endHour
+      properties:
+        doctor:
+          type: object
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Doctor:1'
+        day:
+          example: 4
+          type: number
+          nullable: false
+        startHour:
+          example: '07:00:00'
+          type: string
+          nullable: false
+        endHour:
+          example: '12:30:00'
+          type: string
+          nullable: false
+    'OfficeHoursCreate:1':
+      type: object
+      description: ''
+      properties:
+        doctor:
+          type: object
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Doctor:1'
+        day:
+          example: 4
+          type: number
+          nullable: false
+        startHour:
+          example: 07:00:00
+          type: time
+          nullable: false
+        endHour:
+          example: 12:30:00
+          type: time
+          nullable: false
+    'Patient':
+      type: object
+      description: ''
+      properties:
+        first_name:
+          example: Grzegorz
+          type: string
+          nullable: false
+        surname:
+          example: Smolarek
+          type: string
+          nullable: false
+        address:
+          type: object
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/PatientAddress:2'
+    'Patient:1':
+      type: object
+      description: ''
+      properties:
+        id:
+          example: 1
+          type: number
+          nullable: false
+        first_name:
+          example: Tadeusz
+          type: string
+          nullable: false
+        surname:
+          example: Laskowski
+          type: string
+          nullable: false
+        address:
+          type: object
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/PatientAddress:1'
+    'Patient:2':
+      type: object
+      description: ''
+      properties:
+        id:
+          example: 1
+          type: number
+          nullable: false
+    'PatientAddress:1':
+      type: object
+      description: ''
+      properties:
+        id:
+          example: 1
+          type: number
+          nullable: false
+        house_number:
+          example: 1a
+          type: string
+          nullable: true
+        street:
+          example: Jarominiaka
+          type: string
+          nullable: true
+        city:
+          example: Zabrze
+          type: string
+          nullable: true
+        zip_code:
+          example: 72-672
+          type: string
+          nullable: true
+    'PatientAddress:2':
+      type: object
+      description: ''
+      properties:
+        id:
+          example: 2
+          type: number
+          nullable: false
+        house_number:
+          example: '7'
+          type: string
+          nullable: true
+        street:
+          example: Dobrzyńska
+          type: string
+          nullable: true
+        city:
+          example: Katowice
+          type: string
+          nullable: true
+        zip_code:
+          example: 33-512
+          type: string
+          nullable: true
+    'PatientAddressCreate':
+      type: object
+      description: ''
+      required:
+        - house_number
+        - street
+        - city
+        - zip_code
+      properties:
+        house_number:
+          example: '13'
+          type: string
+          nullable: true
+        street:
+          example: Murarska
+          type: string
+          nullable: true
+        city:
+          example: Radom
+          type: string
+          nullable: true
+        zip_code:
+          example: '26-610'
+          type: string
+          nullable: true
+    'PatientAddressCreate:1':
+      type: object
+      description: ''
+      properties:
+        house_number:
+          example: '13'
+          type: string
+          nullable: true
+        street:
+          example: Murarska
+          type: string
+          nullable: true
+        city:
+          example: Radom
+          type: string
+          nullable: true
+        zip_code:
+          example: '26-610'
+          type: string
+          nullable: true
+    'PatientCreate':
+      type: object
+      description: ''
+      required:
+        - first_name
+        - surname
+        - address
+      properties:
+        first_name:
+          example: Marcin
+          type: string
+          nullable: false
+        surname:
+          example: Szumowski
+          type: string
+          nullable: false
+        address:
+          type: object
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/PatientAddress:1'
+    'PatientCreate:1':
+      type: object
+      description: ''
+      properties:
+        first_name:
+          example: Marcin
+          type: string
+          nullable: false
+        surname:
+          example: Szumowski
+          type: string
+          nullable: false
+        address:
+          type: object
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/PatientAddress:1'
+    'Prescription':
+      type: object
+      description: ''
+      properties:
+        description:
+          example: pół tableki rano i jedna wieczoem
+          type: string
+          nullable: true
+        medicines:
+          example: Etopiryna
+          type: string
+          nullable: true
+    'Prescription:1':
+      type: object
+      description: ''
+      properties:
+        id:
+          example: 1
+          type: number
+          nullable: false
+        description:
+          example: dwa razy dziennie rano i wieczorem brać 1 tabletkę
+          type: string
+          nullable: true
+        medicines:
+          example: Migea
+          type: string
+          nullable: true
+    'Prescription:2':
+      type: object
+      description: ''
+      properties:
+        id:
+          example: 1
+          type: number
+          nullable: false
+        description:
+          example: Skierowanie na badanie
+          type: string
+          nullable: true
+        medicines:
+          example: Rutinacea
+          type: string
+          nullable: true
+    'PrescriptionCreate':
+      type: object
+      description: ''
+      required:
+        - description
+        - medicines
+      properties:
+        description:
+          example: pół tabletki rano i wieczorem
+          type: string
+          nullable: true
+        medicines:
+          example: Atenolol Sanofi
+          type: string
+          nullable: true
+    'PrescriptionCreate:1':
+      type: object
+      description: ''
+      properties:
+        patient:
+          type: object
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Patient:1'
+        doctor:
+          type: object
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Doctor:1'
+        description:
+          example: pół tabletki rano i wieczorem
+          type: string
+          nullable: true
+        medicines:
+          example: Atenolol Sanofi
+          type: string
+          nullable: true
+    'Visit':
+      type: object
+      description: ''
+      properties:
+        patient:
+          type: object
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Patient:1'
+        doctor:
+          type: object
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Doctor:1'
+        patientDescription:
+          example: Ból mięśni i stawów
+          type: string
+          nullable: true
+        doctorDescription:
+          example: 'Przeciążenie'
+          type: string
+          nullable: true
+        prescription:
+          type: object
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Prescription:2'
+        registrationDate:
+          example: 1621548000000
+          type: number
+          nullable: false
+        visitDate:
+          example: 1624869000000
+          type: number
+          nullable: false
+        visitMade:
+          example: false
+          type: boolean
+          nullable: true
+        cancelCause:
+          example: null
+          type: string
+          nullable: true
+        examination:
+          example: false
+          type: boolean
+          nullable: false
+    'Visit:1':
+      type: object
+      description: ''
+      properties:
+        id:
+          example: 1
+          type: number
+          nullable: false
+        patient:
+          type: object
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Patient:1'
+        doctor:
+          type: object
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Doctor:1'
+        patientDescription:
+          example: Ból głowy
+          type: string
+          nullable: true
+        doctorDescription:
+          example: Migrena
+          type: string
+          nullable: true
+        prescription:
+          type: object
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Prescription:1'
+        registrationDate:
+          example: 1621548000000
+          type: number
+          nullable: false
+        visitDate:
+          example: 1624869000000
+          type: number
+          nullable: false
+        visitMade:
+          example: true
+          type: boolean
+          nullable: true
+        cancelCause:
+          example: Termin szczepienie się pokrywa
+          type: string
+          nullable: true
+        examination:
+          example: false
+          type: boolean
+          nullable: false
+    VisitCreate:
+      type: object
+      description: ''
+      required:
+        - patient
+        - doctor
+        - patientDescription
+        - doctorDescription
+        - prescription
+        - registrationDate
+        - visitDate
+        - visitMade
+        - cancelCause
+        - examination
+      properties:
+        patient:
+          type: object
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Patient:1'
+        doctor:
+          type: object
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Doctor:1'
+        patientDescription:
+          example: Lorem ipsum
+          type: string
+          nullable: true
+        doctorDescription:
+          example: Lorem ipsum
+          type: string
+          nullable: true
+        prescription:
+          type: object
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Prescription:2'
+        registrationDate:
+          example: 1620770400000
+          type: number
+          nullable: false
+        visitDate:
+          example: 1624879800000
+          type: number
+          nullable: false
+        visitMade:
+          example: true
+          type: boolean
+          nullable: true
+        cancelCause:
+          example: Lorem ipsum
+          type: string
+          nullable: true
+        examination:
+          example: false
+          type: boolean
+          nullable: false
+    'VisitCreate:1':
+      type: object
+      description: ''
+      properties:
+        patient:
+          type: object
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Patient:1'
+        doctor:
+          type: object
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Doctor:1'
+        patientDescription:
+          example: Ból głowy
+          type: string
+          nullable: true
+        doctorDescription:
+          example: Migrena
+          type: string
+          nullable: true
+        prescription:
+          type: object
+          nullable: true
+          anyOf:
+            -
+              $ref: '#/components/schemas/Prescription:2'
+        registrationDate:
+          example: 1620770400000
+          type: number
+          nullable: false
+        visitDate:
+          example: 1624879800000
+          type:  number
+          nullable: false
+        cancelCause:
+          example: Termin szczepienie się pokrywa
+          type: string
+          nullable: true
+        examination:
+          example: false
+          type: boolean
+          nullable: false
