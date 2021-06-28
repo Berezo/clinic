@@ -15,7 +15,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Time;
 import java.util.List;
 
 @RestController
@@ -34,12 +33,6 @@ public class OfficeHoursRestController {
         this.doctorService = doctorService;
     }
 
-    //    @GetMapping("/office-hours")
-//    public List<OfficeHours> getOfficeHours(){
-//        List<OfficeHours> officeHours = officeHoursService.getOfficeHours();
-//        return officeHours;
-//    }
-
     @GetMapping("/office-hours")
     public ResponseEntity<List<OfficeHours>> getOfficeHours(){
         List<OfficeHours> officeHours = officeHoursService.getOfficeHours();
@@ -49,12 +42,6 @@ public class OfficeHoursRestController {
         return new ResponseEntity<>(officeHours, HttpStatus.OK);
     }
 
-//    @GetMapping("/office-hours/{id}")
-//    public OfficeHours getOfficeHour(@PathVariable(value = "id")int id){
-//        OfficeHours officeHour = officeHoursService.getOfficeHour(id);
-//        return officeHour;
-//    }
-
     @GetMapping("/office-hours/{id}")
     public ResponseEntity<OfficeHours> getOfficeHour(@PathVariable(value = "id")int id){
         OfficeHours officeHour = officeHoursService.getOfficeHour(id);
@@ -63,16 +50,6 @@ public class OfficeHoursRestController {
         }
         return new ResponseEntity<>(officeHour, HttpStatus.OK);
     }
-
-//    @PostMapping(value="/office-hours",
-//            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
-//            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-//    public OfficeHours createOfficeHours(@RequestBody OfficeHoursDetailsRequestModel requestOfficeHoursModel){
-//        OfficeHours officeHours = new OfficeHours();
-//        BeanUtils.copyProperties(requestOfficeHoursModel, officeHours);
-//        officeHoursService.saveOfficeHours(officeHours);
-//        return officeHours;
-//    }
 
     @PostMapping(value="/office-hours",
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},

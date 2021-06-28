@@ -25,12 +25,6 @@ public class PrescriptionRestController {
         this.prescriptionService = prescriptionService;
     }
 
-//    @GetMapping("/prescription")
-//    public List<Prescription> getPrescriptions(){
-//        List<Prescription> prescriptions = prescriptionService.getPrescriptions();
-//        return prescriptions;
-//    }
-
     @GetMapping("/prescription")
     public ResponseEntity<List<Prescription>> getPrescriptions(){
         List<Prescription> prescriptions = prescriptionService.getPrescriptions();
@@ -40,12 +34,6 @@ public class PrescriptionRestController {
         return new ResponseEntity<>(prescriptions, HttpStatus.NOT_FOUND);
     }
 
-//    @GetMapping("/prescription/{id}")
-//    public Prescription getPrescription(@PathVariable(value = "id")int id){
-//        Prescription prescription = prescriptionService.getPrescription(id);
-//        return prescription;
-//    }
-
     @GetMapping("/prescription/{id}")
     public ResponseEntity<Prescription> getPrescription(@PathVariable(value = "id")int id){
         Prescription prescription = prescriptionService.getPrescription(id);
@@ -54,29 +42,6 @@ public class PrescriptionRestController {
         }
         return new ResponseEntity<>(prescription, HttpStatus.OK);
     }
-
-//    @GetMapping("/savePrescription/{patient_id}/{doctor_id}/{description}/{medicines}")
-//    public Prescription savePrescription(@PathVariable(value="patient_id")int patient_id,@PathVariable(value="doctor_id")int doctor_id,@PathVariable(value="description")String description,@PathVariable(value="medicines")String medicines){
-//        doctor=doctorService.getDoctor(doctor_id);
-//        patient=patientService.getPatient(patient_id);
-//        Prescription prescription=new Prescription();
-//        prescription.setMedicines(medicines);
-//        prescription.setDescription(description);
-//        prescription.setDoctor(doctor);
-//        prescription.setPatient(patient);
-//        int id=prescriptionService.savePrescription(prescription);
-//        return prescriptionService.getPrescription(id);
-//    }
-
-//    @PostMapping(value="/prescription",
-//                 consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
-//                 produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-//    public Prescription createPrescription(@RequestBody PrescriptionDetailsRequestModel requestPrescriptionModel){
-//        Prescription prescription = new Prescription();
-//        BeanUtils.copyProperties(requestPrescriptionModel, prescription);
-//        prescriptionService.savePrescription(prescription);
-//        return prescription;
-//    }
 
     @PostMapping(value="/prescription",
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},

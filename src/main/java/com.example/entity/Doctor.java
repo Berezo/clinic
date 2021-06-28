@@ -1,7 +1,6 @@
 package com.example.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.util.List;

@@ -1,7 +1,5 @@
 package com.example.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -17,12 +15,10 @@ public class Visit {
 
     @ManyToOne(cascade=  {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(columnDefinition="integer", name = "patient_id")
-//    @JsonIgnoreProperties({"first_name", "surname", "address"})
     private Patient patient;
 
     @ManyToOne(cascade=  {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(columnDefinition="integer", name = "doctor_id")
-//    @JsonIgnoreProperties({"first_name", "surname", "is_specialist", "address"})
     private Doctor doctor;
 
     @Column(name = "is_examination", nullable = false)
@@ -36,7 +32,6 @@ public class Visit {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(columnDefinition="integer", name = "prescription_id")
-//    @JsonIgnoreProperties({"patient", "doctor", "is_specialist", "address"})
     private Prescription prescription;
 
     @Column(name = "registration_date", nullable = false)

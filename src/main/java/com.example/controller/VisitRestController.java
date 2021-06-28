@@ -36,12 +36,6 @@ class VisitRestController {
         this.officeHoursService = officeHoursService;
     }
 
-    //    @GetMapping("/visit")
-//    public List<Visit> getVisits(){
-//        List<Visit> visits = visitService.getVisits();
-//        return visits;
-//    }
-
     @GetMapping("/visit")
     public ResponseEntity<List<Visit>> getVisits(){
         List<Visit> visits = visitService.getVisits();
@@ -51,12 +45,6 @@ class VisitRestController {
         return new ResponseEntity<>(visits, HttpStatus.OK);
     }
 
-//    @GetMapping("/visit/{id}")
-//    public Visit getVisit(@PathVariable(value = "id")int id){
-//        Visit visit = visitService.getVisit(id);
-//        return visit;
-//    }
-
     @GetMapping("/visit/{id}")
     public ResponseEntity<Visit> getVisit(@PathVariable(value = "id")int id){
         Visit visit = visitService.getVisit(id);
@@ -65,16 +53,6 @@ class VisitRestController {
         }
         return new ResponseEntity<>(visit, HttpStatus.OK);
     }
-
-//    @PostMapping(value = "/visit",
-//                 consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
-//                 produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-//    public Visit createVisit(@RequestBody VisitDetailsRequestModel requestVisitDetails){
-//        Visit visit = new Visit();
-//        BeanUtils.copyProperties(requestVisitDetails, visit);
-//        visitService.saveVisit(visit);
-//        return visit;
-//    }
 
     @PostMapping(value = "/visit",
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
@@ -100,18 +78,6 @@ class VisitRestController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
-
-//    TODO PUT modyfikuje również encje Doctor, Patient i Perscription
-//    @PutMapping(value = "/visit/{id}",
-//            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
-//            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-//    public Visit updateVisit(@PathVariable(value = "id")int id, @RequestBody VisitDetailsRequestModel requestVisitDetails){
-//        Visit visit =  visitService.getVisit(id);
-//
-//        BeanUtils.copyProperties(requestVisitDetails, visit);
-//        visitService.updateVisit(visit);
-//        return visit;
-//    }
 
     @PutMapping(value = "/visit/{id}",
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},

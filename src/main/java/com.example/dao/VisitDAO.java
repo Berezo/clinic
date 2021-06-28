@@ -7,10 +7,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Time;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 @Repository

@@ -1,6 +1,5 @@
 package com.example.dao;
 
-import com.example.entity.Doctor;
 import com.example.entity.Patient;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

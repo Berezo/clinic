@@ -28,12 +28,6 @@ public class PatientRestController {
         this.patientService = patientService;
     }
 
-//    @GetMapping("/patient")
-//    public List<Patient> getPatients(){
-//        List<Patient> patients = patientService.getPatients();
-//        return patients;
-//    }
-
     @GetMapping("/patient")
     public ResponseEntity<List<Patient>> getPatients(){
         List<Patient> patients = patientService.getPatients();
@@ -42,12 +36,6 @@ public class PatientRestController {
         }
         return new ResponseEntity<List<Patient>>(patients, HttpStatus.OK);
     }
-
-//    @GetMapping("/patient/{id}")
-//    public Patient getPatient(@PathVariable(value = "id")int id){
-//        Patient patient = patientService.getPatient(id);
-//        return patient;
-//    }
 
     @GetMapping("/patient/{id}")
     public ResponseEntity<Patient> getPatient(@PathVariable(value = "id")int id){
@@ -58,12 +46,6 @@ public class PatientRestController {
         return new ResponseEntity<Patient>(patient, HttpStatus.OK);
     }
 
-//    @GetMapping("/patient/address")
-//    public List<PatientAddress> getPatientsAddresses(){
-//        List<PatientAddress> patientsAddresses = patientService.getPatientAddresses();
-//        return patientsAddresses;
-//    }
-
     @GetMapping("/patient/address")
     public ResponseEntity<List<PatientAddress>> getPatientsAddresses(){
         List<PatientAddress> patientsAddresses = patientService.getPatientAddresses();
@@ -73,12 +55,6 @@ public class PatientRestController {
         return new ResponseEntity<List<PatientAddress>>(patientsAddresses, HttpStatus.OK);
     }
 
-//    @GetMapping("/patient/address/{id}")
-//    public PatientAddress getPatientAddress(@PathVariable(value = "id")int id){
-//        PatientAddress patientAddress = patientService.getPatientAddress(id);
-//        return patientAddress;
-//    }
-
     @GetMapping("/patient/address/{id}")
     public ResponseEntity<PatientAddress> getPatientAddress(@PathVariable(value = "id")int id){
         PatientAddress patientAddress = patientService.getPatientAddress(id);
@@ -87,24 +63,6 @@ public class PatientRestController {
         }
         return new ResponseEntity<PatientAddress>(patientAddress, HttpStatus.OK);
     }
-
-
-//    @PostMapping(value="/patient",
-//                 consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
-//                 produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-//    public Patient createPatient(@RequestBody PatientDetailsRequestModel requestPatientDetails){
-//        Patient patient = new Patient();
-//        BeanUtils.copyProperties(requestPatientDetails, patient);
-//        patientService.savePatient(patient);
-//        return patient;
-//    }
-
-    //===========================================================================================================
-    /*
-    W przypadku gdy chcemy dodać nową osobą a podamy złą nazwę atrybutu (np. zamiast surname suraname) co prawda
-    ani użytkowinik ani adres nie są dodawane jednak w tabeli adresów id przeskakuje na kolejne.
-    */
-    //===========================================================================================================
 
     @PostMapping(value="/patient",
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
@@ -124,16 +82,6 @@ public class PatientRestController {
         }
 
     }
-
-//    @PostMapping(value="/patient/address",
-//            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
-//            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-//    public PatientAddress createPatientAddress(@RequestBody PatientAddressDetailsRequestModel requestPatientAddressDetails){
-//        PatientAddress patientAddress = new PatientAddress();
-//        BeanUtils.copyProperties(requestPatientAddressDetails, patientAddress);
-//        patientService.savePatientAdress(patientAddress);
-//        return patientAddress;
-//    }
 
     @PostMapping(value="/patient/address",
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
