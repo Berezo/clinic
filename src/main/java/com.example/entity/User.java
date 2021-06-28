@@ -1,9 +1,6 @@
 package com.example.entity;
 
 import javax.persistence.*;
-import javax.print.Doc;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name="users")

@@ -21,16 +21,9 @@ public class HomeController {
 
     private UserService userService;
 
-    private PatientService patientService;
-
     @Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;
-    }
-
-    @Autowired
-    public void setPatientService(PatientService patientService) {
-        this.patientService = patientService;
     }
 
     @GetMapping("/")

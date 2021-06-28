@@ -28,12 +28,6 @@ public class DoctorRestController {
         this.doctorService = doctorService;
     }
 
-//    @GetMapping(value = "/doctor")
-//    public List<Doctor> getDoctors(){
-//        List<Doctor> doctors = doctorService.getDoctors();
-//        return doctors;
-//    }
-
     @GetMapping(value = "/doctor")
     public ResponseEntity<List<Doctor>> getDoctors(){
         List<Doctor> doctors = doctorService.getDoctors();
@@ -42,12 +36,6 @@ public class DoctorRestController {
         }
         return new ResponseEntity<List<Doctor>>(doctors, HttpStatus.OK);
     }
-
-//    @GetMapping(value = "/doctor/{id}")
-//    public Doctor getDoctor(@PathVariable(value = "id")int id){
-//        Doctor doctor = doctorService.getDoctor(id);
-//        return doctor;
-//    }
 
     @GetMapping(value = "/doctor/{id}")
     public ResponseEntity<Doctor> getDoctor(@PathVariable(value = "id")int id){
@@ -58,12 +46,6 @@ public class DoctorRestController {
         return new ResponseEntity<Doctor>(doctor, HttpStatus.OK);
     }
 
-//    @GetMapping(value = "/doctor/address")
-//    public List<DoctorAddress> getDoctorsAddresses(){
-//        List<DoctorAddress> doctorAddresses = doctorService.getDoctorsAddress();
-//        return doctorAddresses;
-//    }
-
     @GetMapping(value = "/doctor/address")
     public ResponseEntity<List<DoctorAddress>> getDoctorsAddresses(){
         List<DoctorAddress> doctorAddresses = doctorService.getDoctorsAddress();
@@ -73,13 +55,6 @@ public class DoctorRestController {
         return new ResponseEntity<List<DoctorAddress>>(doctorAddresses, HttpStatus.OK);
     }
 
-//    @GetMapping(value = "/doctor/address/{id}")
-//    public DoctorAddress getDoctorAddress(@PathVariable(value = "id")int id){
-//        DoctorAddress doctorAddress = doctorService.getDoctorAddress(id);
-//
-//        return doctorAddress;
-//    }
-
     @GetMapping(value = "/doctor/address/{id}")
     public ResponseEntity<DoctorAddress> getDoctorAddress(@PathVariable(value = "id")int id){
         DoctorAddress doctorAddress = doctorService.getDoctorAddress(id);
@@ -88,17 +63,6 @@ public class DoctorRestController {
         }
         return new ResponseEntity<DoctorAddress>(doctorAddress, HttpStatus.OK);
     }
-
-//    @PostMapping(value="/doctor",
-//                 consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
-//                 produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-//    public Doctor createDoctor(@RequestBody DoctorDetailsRequestModel requestDoctorDetails){
-//        Doctor doctor = new Doctor();
-//        BeanUtils.copyProperties(requestDoctorDetails,doctor);
-//        doctorService.saveDoctor(doctor);
-//
-//        return doctor
-//    }
 
     @PostMapping(value="/doctor",
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
@@ -118,17 +82,6 @@ public class DoctorRestController {
         }
     }
 
-//    @PostMapping(value="/doctor/address",
-//            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
-//            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-//    public DoctorAddress createDoctorAddress(@RequestBody DoctorAddressDetailsRequestModel requestDoctorAddressDetails) {
-//        DoctorAddress doctorAddress = new DoctorAddress();
-//        BeanUtils.copyProperties(requestDoctorAddressDetails, doctorAddress);
-//
-//        doctorService.saveDoctorAddress(doctorAddress);
-//        return doctorAddress;
-//    }
-
     @PostMapping(value="/doctor/address",
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
@@ -147,16 +100,6 @@ public class DoctorRestController {
         }
     }
 
-//    @PutMapping(value="/doctor/{id}",
-//            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
-//            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-//    public Doctor updateDoctor(@PathVariable(value = "id")int id, @RequestBody DoctorDetailsRequestModel requestDoctorDetails){
-//        Doctor doctor = doctorService.getDoctor(id);
-//        BeanUtils.copyProperties(requestDoctorDetails, doctor);
-//        doctorService.saveDoctor(doctor);
-//        return doctor;
-//    }
-
     @PutMapping(value="/doctor/{id}",
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
@@ -172,16 +115,6 @@ public class DoctorRestController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
-
-//    @PutMapping(value="/doctor/address/{id}",
-//            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
-//            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-//    public DoctorAddress updateDoctorAddress(@PathVariable(value = "id")int id, @RequestBody DoctorAddressDetailsRequestModel requestDoctorAddressDetails){
-//        DoctorAddress doctorAddress = doctorService.getDoctorAddress(id);
-//        BeanUtils.copyProperties(requestDoctorAddressDetails, doctorAddress);
-//        doctorService.saveDoctorAddress(doctorAddress);
-//        return doctorAddress;
-//    }
 
     @PutMapping(value="/doctor/address/{id}",
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
@@ -199,11 +132,6 @@ public class DoctorRestController {
         }
     }
 
-//    @DeleteMapping(path="/doctor/{id}")
-//    public void deleteDoctor(@PathVariable (value = "id")int id) {
-//        doctorService.deleteDoctor(id);
-//    }
-
     @DeleteMapping(path="/doctor/{id}")
     public ResponseEntity deleteDoctor(@PathVariable (value = "id")int id) {
         try{
@@ -213,12 +141,6 @@ public class DoctorRestController {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }
-
-//    @DeleteMapping(path="/doctor/address/{id}")
-//    public void deleteDoctorAddress(@PathVariable (value = "id")int id) {
-//
-//            doctorService.deleteDoctorAddress(id);
-//    }
 
     @DeleteMapping(path="/doctor/address/{id}")
     public ResponseEntity deleteDoctorAddress(@PathVariable (value = "id")int id) {
