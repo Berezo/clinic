@@ -1,0 +1,14 @@
+Ocena do której aspirujemy: 3,5
+
+Spełnione warunki to:
+- Wykorzystanie narzędzia Spring Framework (najlepiej z wykorzystaniem SpringBoot) + Maven + git (Gradle zamiast Maven).
+- Kod ma być dostępny w zewnętrznym repozytorium razem z dokumentacją.
+- min 10 poprawnych (zgodnych z REST) endpoint-ów (min 4 metody GET/POST/PUT/DELETE) Należy znać sens wykorzystywanych metod.
+- Do wszystkich endpointów należy przygotować kolekcję requestów za pomocą programu Postman (wyeksportowana kolekcja ma znaleźć się w repozytorium razem z kodem oraz dokumentacją w oddzielnych katalogach).
+- min 5 tabel w bazie wykorzystywanej przez aplikację.
+- Logika biznesowa wykorzystująca DI oraz IoC.
+- Dokumentacja opisująca przeznaczenie oraz przypadki użycia aplikacji w postaci diagramów UML (Scenariusze i przypadki użycia).
+
+Dodatkowe elementy:
+- Wykorzystanie do projektowania i dokumentacji API narzędzia typu https://swagger.io/.
+- Utworzenie widoków dla podstawowej wersji aplikacji.
