@@ -16,3 +16,5 @@ login: admin
 hasło: admin
 
 W folderze API znajduje się kolekcja requestów w formacie json, jak i dokumentacja API zapisana w formacie YAML.
+
+W folderze src>resources znajdują się skrypt do tworzenia bazy oraz skrypt z testowymi danymi.
